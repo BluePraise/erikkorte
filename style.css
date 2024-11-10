@@ -3,3 +3,17 @@
 * Author: Magalie Chetrit
 * Author URI: http://www.magaliechetrit.com
 */
+
+/* Reset */
+
+/* Layout */
+.main-container {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.11);
+}
+
+.body {
+    background-color: #e8ecef;
+}
