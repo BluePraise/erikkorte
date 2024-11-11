@@ -7,4 +7,4 @@ Ik heb een log bijgehouden in changelog.md
 
 ## Resources
 - [icons8](https://icons8.com/line-awesome)
-- [Google Fonts](https://fonts.google.com/) Source Sans Pro
+- [Google Fonts](https://fonts.google.com/) Source Sans Pro and Montserrat

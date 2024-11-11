@@ -38,6 +38,7 @@ body {
     box-shadow: 0 0 5px rgba(85, 57, 57, 0.11);
 }
 
+/* Top Area */
 .top-area-block {
     background-color: #edeef3;
     padding: 0 10px;
@@ -68,4 +69,35 @@ body {
 .contacts li i {
     margin-right: 5px;
     font-size: 20px;
+}
+/* End Top Area */
+/* Header */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px 10px;
+}
+.custom-logo-link {
+    display: inline-block;
+    margin-right: 20px;
+}
+.main-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.main-menu li {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+.main-menu li a {
+    color: #5f727f;
+    text-decoration: none;
+    text-transform: uppercase;
 }

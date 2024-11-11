@@ -3,3 +3,4 @@
 - Added changelog
 - Added readme
 - Scaffolding files.
+- Supports logo
