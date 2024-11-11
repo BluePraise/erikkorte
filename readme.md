@@ -4,3 +4,7 @@ Dit thema is gemaakt op verzoek van Erik Korte Uitvaartverzorging. Het doel van 
 
 ## Changelog
 Ik heb een log bijgehouden in changelog.md
+
+## Resources
+- [icons8](https://icons8.com/line-awesome)
+- [Google Fonts](https://fonts.google.com/) Source Sans Pro

@@ -4,16 +4,68 @@
 * Author URI: http://www.magaliechetrit.com
 */
 
+/* Variables */
+:root {
+    --Source-Sans-Pro: "Source Sans 3", sans-serif;
+}
+
 /* Reset */
 
 /* Layout */
-.main-container {
+.d-block {
+    display: block;
+}
+.d-flex {
+    display: flex;
+}
+.unlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+    background-color: #e8ecef;
+    color: #5f727f;
+    margin:0;
+    padding: 0;
+}
+.site-wrapper {
     max-width: 1260px;
     margin: 0 auto;
     padding: 0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 0 5px rgba(85, 57, 57, 0.11);
 }
 
-.body {
-    background-color: #e8ecef;
+.top-area-block {
+    background-color: #edeef3;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+    color: #5f727f;
+}
+
+.contacts {
+    align-items: center;
+    justify-content: center;
+}
+.contacts li {
+    display: inline-flex;
+    margin: 0 20px;
+    align-items: center;
+}
+.contacts li p {
+    color: #8896A0;
+    font-family: var(--Source-Sans-Pro);
+    font-size: 14px;
+}
+.contacts li a {
+    font-family: var(--Source-Sans-Pro);
+    color: #8896A0;
+    font-size: 14px;
+    text-decoration: none;
+}
+.contacts li i {
+    margin-right: 5px;
+    font-size: 20px;
 }
