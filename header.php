@@ -14,6 +14,7 @@
                 } else {
                     echo '<h1>'.get_bloginfo('name').'</h1>';
                 }
+				echo '<div class="mobile_menubtn"><i class="fa-solid fa-bars"></i></div>';
                 wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container' => 'ul',
@@ -23,4 +24,3 @@
             </nav>
         </header>
         <main>
-
