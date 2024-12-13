@@ -13,6 +13,9 @@ if (is_singular('cpt_condolances')) {
     <div class="container">
         <h1 class="banner-heading"><?php the_title(); ?></h1>
     </div>
+ <div class="breadcrumbs-container">
+        <?php echo the_breadcrumb(); ?>
+    </div>
 </div>
 
 <div class="block-content">

@@ -413,3 +413,123 @@ add_filter('manage_edit-post_sortable_columns', 'make_featured_image_column_sort
 add_filter('manage_edit-page_sortable_columns', 'make_featured_image_column_sortable');
 
 
+// Add Option To manuaaly add candles in Condoleance Register Post Type 
+
+
+/**
+ * Add repeater field for name and date/time
+ */
+
+ function condolence_add_meta_box() {
+    add_meta_box(
+        'condolence_meta_box', // ID of the meta box
+        'Candles Details',  // Title of the meta box
+        'condolence_meta_box_callback', // Callback function
+        'cpt_condolances', // Post type
+        'normal', // Context
+        'high' // Priority
+    );
+}
+add_action('add_meta_boxes', 'condolence_add_meta_box');
+
+function condolence_meta_box_callback($post) {
+    // Nonce for security
+    wp_nonce_field('condolence_save_meta_box_data', 'condolence_meta_box_nonce');
+
+    $candles = get_post_meta($post->ID, 'cmb_condalances_candles', 1);
+    $candles = is_array($candles) ? $candles : ['count' => 0, 'authors' => []];
+    
+    //Array ( [count] => 11 [authors] => 6 )
+    // Get candle count
+    $candle_count = isset($candles['count']) ? $candles['count'] : 0;
+
+    ?>
+    <!-- Candle Count Input -->
+    <label for="candle_count">Candle Count:</label>
+    <input type="number" id="candle_count" name="candle_count" value="<?php echo esc_attr($candle_count); ?>" />
+
+    <!-- Repeater Container -->
+    <div id="repeater-container">
+        <?php
+        if (!empty($candles['authors']) && is_array($candles['authors']) ) {
+            foreach (array_reverse($candles['authors']) as $candleName) {
+                if(is_array($candleName) && isset($candleName['candle_name']) && isset($candleName['candle_date']) ){
+                ?>
+                <div class="repeater-row">
+                    <input type="text" name="condolence_name[]" placeholder="Name" value="<?php echo esc_attr($candleName['candle_name']); ?>" />
+                    <input type="text" name="condolence_date[]" value="<?php echo esc_attr($candleName['candle_date']); ?>" />
+                    <button type="button" class="remove-row">Remove</button>
+                </div>
+                <?php
+                }
+            }
+        }
+        ?>
+    </div>
+    <button type="button" id="add-row">Light a Candle</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('#repeater-container');
+            const addRow = document.querySelector('#add-row');
+
+            addRow.addEventListener('click', function () {
+                const row = document.createElement('div');
+                row.classList.add('repeater-row');
+                row.innerHTML = `
+                    <input type="text" name="condolence_name[]" placeholder="Name" />
+                    <input type="text" name="condolence_date[]" />
+                    <button type="button" class="remove-row">Remove</button>
+                `;
+                container.appendChild(row);
+
+                row.querySelector('.remove-row').addEventListener('click', function () {
+                    row.remove();
+                });
+            });
+
+            container.addEventListener('click', function (e) {
+                if (e.target && e.target.classList.contains('remove-row')) {
+                    e.target.parentNode.remove();
+                }
+            });
+        });
+    </script>
+    <?php
+}
+
+function condolence_save_meta_box_data($post_id) {
+    // Verify nonce
+    if (!isset($_POST['condolence_meta_box_nonce']) || !wp_verify_nonce($_POST['condolence_meta_box_nonce'], 'condolence_save_meta_box_data')) {
+        return;
+    }
+
+    // Check for autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Check user permissions
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // Collect and sanitize candle count
+    $candle_count = isset($_POST['candle_count']) ? intval($_POST['candle_count']) : 0;
+
+    // Collect and sanitize repeater data
+    $candles_data = ['count' => $candle_count, 'authors' => []];
+    if (isset($_POST['condolence_name']) && isset($_POST['condolence_date'])) {
+        foreach ($_POST['condolence_name'] as $index => $name) {
+            $candles_data['authors'][] = [
+                'candle_name' => sanitize_text_field($name),
+                'candle_date' => sanitize_text_field($_POST['condolence_date'][$index]),
+            ];
+        }
+    }
+
+    // Save meta data
+    update_post_meta($post_id, 'cmb_condalances_candles', $candles_data);
+}
+add_action('save_post', 'condolence_save_meta_box_data');
+
