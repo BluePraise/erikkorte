@@ -28,15 +28,15 @@ $team_section = get_field('familiekamers-section');
 $gallery = get_field('gallery_col'); // Get the gallery field, which returns an array of image URLs
 
 if ($gallery): // Check if the gallery has images
-    echo '<div class="two-col-gallery">';
+    echo '<div class="gallery theme-gallery two-col-gallery">';
     foreach ($gallery as $image_url): // Loop through each image URL
         // Get the image ID from the URL
         $image_id = attachment_url_to_postid($image_url);
-        
-        // Get the image title and caption    
+
+        // Get the image title and caption
         $image_caption = get_post_field('post_excerpt', $image_id);
 		$image_description = get_post_field('post_content', $image_id);
-        
+
 echo '<div class="gallery-item">';
     echo '<a href="' . esc_url($image_url) . '" data-lightbox="roadtrip">';
         echo '<div class="gallery-image">';
@@ -49,7 +49,7 @@ echo '<div class="gallery-item">';
             }
            if ($image_description) {
                     echo '<p>' . esc_html($image_description) . '</p>';
-            }         
+            }
         echo '</div>';
     echo '</a>';
 echo '</div>';

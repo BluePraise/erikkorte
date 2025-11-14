@@ -27,15 +27,16 @@ $team_section = get_field('uitvaarthuis-section');
 $gallery = get_field('uitvaarthuis_three_col_gallery'); // Get the gallery field, which returns an array of image URLs
 
 if ($gallery): // Check if the gallery has images
-    echo '<div class="three-col-gallery">';
+    // Display the images in a three-column grid
+    echo '<div class="gallery theme-gallery three-col-gallery">';
     foreach ($gallery as $image_url): // Loop through each image URL
         // Get the image ID from the URL
         $image_id = attachment_url_to_postid($image_url);
-        
-        // Get the image title and caption    
+
+        // Get the image title and caption
         $image_caption = get_post_field('post_excerpt', $image_id);
 		$image_description = get_post_field('post_content', $image_id);
-        
+
 echo '<div class="gallery-item">';
     echo '<a href="' . esc_url($image_url) . '" data-lightbox="roadtrip">';
         echo '<div class="gallery-image">';
@@ -48,7 +49,7 @@ echo '<div class="gallery-item">';
             }
            if ($image_description) {
                     echo '<p>' . esc_html($image_description) . '</p>';
-            }           
+            }
         echo '</div>';
     echo '</a>';
 echo '</div>';
@@ -63,11 +64,11 @@ endif;
 		</div>
     </div>
 </div>
-</div>	
+</div>
 <div class="container-fluid my-lg-5 my-3">
 	<div class="row">
 		<div class="col-lg-12">
-			
+
 					<?php
 $iframe_content = get_field('youtube_video');
 if ($iframe_content) {
@@ -81,20 +82,21 @@ if ($iframe_content) {
 <div class="container-fluid my-lg-5 my-3">
     <div class="row">
 		<div class="col-lg-12 col-md-12">
-			<div class="text-content-wrapper">			
+			<div class="text-content-wrapper">
 <?php
 $gallery = get_field('uitvaarthuis_two_col_gallery'); // Get the gallery field, which returns an array of image URLs
 
 if ($gallery): // Check if the gallery has images
-    echo '<div class="two-col-gallery">';
+    // Display the images in a two-column grid
+    echo '<div class="gallery theme-gallery two-col-gallery">';
      foreach ($gallery as $image_url): // Loop through each image URL
         // Get the image ID from the URL
         $image_id = attachment_url_to_postid($image_url);
-        
-        // Get the image title and caption    
+
+        // Get the image title and caption
         $image_caption = get_post_field('post_excerpt', $image_id);
 		$image_description = get_post_field('post_content', $image_id);
-        
+
 echo '<div class="gallery-item">';
     echo '<a href="' . esc_url($image_url) . '" data-lightbox="roadtrip">';
         echo '<div class="gallery-image">';
@@ -107,7 +109,7 @@ echo '<div class="gallery-item">';
             }
            if ($image_description) {
                     echo '<p>' . esc_html($image_description) . '</p>';
-            }         
+            }
         echo '</div>';
     echo '</a>';
 echo '</div>';

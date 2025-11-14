@@ -21,8 +21,8 @@
     --bs-black-rgb:0, 0, 0;
     --bs-white: #ffffff;
     --bs-white-rgb: 255, 255, 255;
-    --color-gradient-1: linear-gradient(90deg, var(--theme-color1) 0%, var(--theme-color2) 100%);  
-    --transition: all 500ms ease;  
+    --color-gradient-1: linear-gradient(90deg, var(--theme-color1) 0%, var(--theme-color2) 100%);
+    --transition: all 500ms ease;
     --font-awesome-free: "Font Awesome 6 Free";
     --font-awesome-brands: "Font Awesome 6 Brands";
     --Source-Sans-Pro: "Source Sans 3", sans-serif;
@@ -273,7 +273,7 @@ header p {
 }
 
 .quickfinder-item-box:hover .icon_box_info.service-image img{
-  filter: brightness(0) saturate(100%) invert(20%) sepia(42%) saturate(4505%) hue-rotate(346deg) brightness(92%) contrast(96%);  
+  filter: brightness(0) saturate(100%) invert(20%) sepia(42%) saturate(4505%) hue-rotate(346deg) brightness(92%) contrast(96%);
 }
 
 /*--almelo-close--*/
@@ -441,17 +441,17 @@ footer .menu {
     font-size:19px;
     font-weight:400;
     text-transform:uppercase;
-    font-family: var(--Montserrat);  
-    text-align:center;   
+    font-family: var(--Montserrat);
+    text-align:center;
 }
 .contact-info-row p, .contact-info-row a{
     color:#5f727f;
     font-size:14px;
     font-weight:500;
     text-transform:capitalize;
-    font-family: var(--Montserrat); 
-    text-align:center; 
-    text-decoration:none;  
+    font-family: var(--Montserrat);
+    text-align:center;
+    text-decoration:none;
 }
 .contact-info-row .icon img{
     display: block;
@@ -491,7 +491,7 @@ footer .menu {
     background-color: var(--theme-color1);
     width:100%;
     margin: 15px 15px 15px 0;
-    font-family: var(--Montserrat); 
+    font-family: var(--Montserrat);
    font-weight:700;
    color:var(--bs-white);
     text-transform:uppercase;
@@ -606,33 +606,8 @@ footer .menu {
 }
 /* --blog-close-- */
 /* --uitvaarthuis-twente-close-- */
-.three-col-gallery,
-.two-col-gallery {
-    --columns: 3;
-    display: grid;
-    grid-template-columns: repeat(var(--columns), 1fr);
-    gap: 42px;
-    margin-top: 20px;
-}
 
-.gallery-item img {
-    height: auto;
-    border-radius: 0;
-    transition: transform 0.3s ease-in-out;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    width: 100%;
-}
-  .two-col-gallery {
-    --columns: 2;
-  }
-	.three-col-gallery a,
-.two-col-gallery a{
-    position:relative;
-    display:block;
-}
-.three-col-gallery a:before,
-.two-col-gallery a:before{
+.theme-gallery .gallery-item a:before{
     position:absolute;
     content:'';
     height:0%;
@@ -644,12 +619,10 @@ footer .menu {
     right:0;
     transition:1s;
 }
-.three-col-gallery a:hover:before,
-.two-col-gallery a:hover:before{
+.theme-gallery .gallery-item a:hover:before{
     height:100%;
 }
-.three-col-gallery a:after,
-.two-col-gallery a:after{
+.theme-gallery .gallery-item a:after{
     position:absolute;
     content:'';
     inset:0;
@@ -670,14 +643,12 @@ footer .menu {
      background-image:url('/24/ek/wp-content/uploads/2024/12/camera-icon.png');
 	transform:scale(0);
 }
-.three-col-gallery a:hover:after,
-.two-col-gallery a:hover:after{
+.theme-gallery .gallery-item a:hover:after{
     opacity:1;
      transition:.5s;
 	transform:scale(1);
 }
-.three-col-gallery .title-caption-col,
-.two-col-gallery .title-caption-col{
+.theme-gallery .title-caption-col{
     position:absolute;
     bottom:35px;
     right:0;
@@ -687,18 +658,15 @@ footer .menu {
     opacity:0;
     transition:2s;
 }
-.three-col-gallery .title-caption-col h3,
-.two-col-gallery .title-caption-col h3{
+.theme-gallery .title-caption-col h3{
     color:white;
     font-size:22px;
     margin-bottom:0;
 }
-.three-col-gallery .gallery-item a:hover .title-caption-col,
-.two-col-gallery .gallery-item a:hover .title-caption-col{
+.theme-gallery .gallery-item a:hover .title-caption-col{
     opacity:1;
 }
-.three-col-gallery .title-caption-col p,
-.two-col-gallery .title-caption-col p{
+.theme-gallery .title-caption-col p{
     margin-bottom:0;
 }
 .lb-container img{
@@ -988,7 +956,7 @@ margin:0 !important;
 }
 .single-cpt_condolances .gem-gallery-item-image a:hover:after{
     opacity:1;
-     
+
 	transform:scale(1);
 }
 .single-cpt_condolances .condolances-meta ul{
@@ -1213,7 +1181,7 @@ margin:0 !important;
     justify-content:space-between;
 }
 .single-post-content a.prev-post {
-    margin-right:10px; 
+    margin-right:10px;
 }
 .single-post-content .post-navigation-icons a,
 .single-post-content .post-comments i{
@@ -1436,9 +1404,9 @@ article#post-826 .gem-gallery {
     .contact-form .flex-col p {
         gap: 5px;
     }
-	.three-col-gallery,
-	.two-col-gallery{
-		--columns: 1;
+	.theme-gallery.three-col-gallery,
+	.theme-gallery.two-col-gallery{
+		grid-template-columns: 1fr;
 	}
 	.gem-gallery-item-image img{
 		height:350px;
