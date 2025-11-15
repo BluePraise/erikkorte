@@ -10,20 +10,20 @@ $intro_text = get_field('intro_text');
 $site_title = get_field('site_title');
 $site_sub_title = get_field('site_sub_title');
 $site_description = get_field('site_description');
-$gem_heading = get_field('gem_heading'); 
+$gem_heading = get_field('gem_heading');
 // Services Section
 $services_heading = get_field('heading');
 $services_sub_heading = get_field('sub_heading');
-$services_description = get_field('description'); 
-// Team Section 
+$services_description = get_field('description');
+// Team Section
 $team_heading = get_field('team_heading');
 $team_description = get_field('team_description');
-//Quality Mark 
+//Quality Mark
 $quality_mark = get_field('quality_mark');
 ?>
 
 <!-- Hero Section -->
-<section class="erik bg-white">
+<section class="erik hero bg-white">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6">
@@ -57,7 +57,7 @@ $quality_mark = get_field('quality_mark');
                 <div class="gem_textbox">
                     <?php if (have_rows('gem_text_section')): ?>
                         <?php $i = 1; ?>
-                        <?php while (have_rows('gem_text_section')): the_row(); 
+                        <?php while (have_rows('gem_text_section')): the_row();
                             $text = get_sub_field('gem_text'); // Text from repeater subfield
                         ?>
                             <div class="row">
@@ -92,15 +92,15 @@ $quality_mark = get_field('quality_mark');
             <?php
             // Check if the repeater field has rows of data
             if (have_rows('services')): ?>
-                <?php 
+                <?php
                 $i = 1;
                 // Loop through the rows of data
-                while (have_rows('services')): the_row(); 
+                while (have_rows('services')): the_row();
                     // Get subfields
-                    $icon = get_sub_field('icon'); 
-                    $service_heading = get_sub_field('heading'); 
+                    $icon = get_sub_field('icon');
+                    $service_heading = get_sub_field('heading');
                     $service_description = get_sub_field('description');
-                    $services_url = get_sub_field('services_url'); 
+                    $services_url = get_sub_field('services_url');
                 ?>
 
                     <div class="col-lg-4 col-md-4 col-sm-12">
@@ -111,9 +111,9 @@ $quality_mark = get_field('quality_mark');
                                         <img src="<?php echo esc_url( $icon ); ?>">
                                     </div>
                                 </div>
-                                <div class="quickfinder-item-info"> 
-                                    <div class="quickfinder-item-title"><?php echo esc_html($service_heading); ?></div> 
-                                    <div class="quickfinder-item-text"><?php echo esc_html($service_description); ?></div> 
+                                <div class="quickfinder-item-info">
+                                    <div class="quickfinder-item-title"><?php echo esc_html($service_heading); ?></div>
+                                    <div class="quickfinder-item-text"><?php echo esc_html($service_description); ?></div>
                                 </div>
                             </div>
                         </a>
@@ -139,9 +139,9 @@ $quality_mark = get_field('quality_mark');
             <?php
             // Check if the repeater field has rows of data (team members)
             if (have_rows('team_members')): ?>
-                <?php 
+                <?php
                 // Loop through the rows of data
-                while (have_rows('team_members')): the_row(); 
+                while (have_rows('team_members')): the_row();
                     // Get subfields for each team member
                     $profile_image = get_sub_field('member_profile_image');
                     $name = get_sub_field('member_name');
@@ -159,18 +159,18 @@ $quality_mark = get_field('quality_mark');
                                     <img src="default-profile-image.jpg" alt="Default Profile Image">
                                 <?php endif; ?>
                             </div>
-                            
+
                             <!-- Team Member Info -->
-                            <div class="team-person-info"> 
-                                <div class="team-person-name styled-subtitle"><?php echo esc_html($name); ?></div> 
-                                <div class="team-person-position date-color"><?php echo esc_html($designation); ?></div> 
-                                <div class="separator"></div> 
+                            <div class="team-person-info">
+                                <div class="team-person-name styled-subtitle"><?php echo esc_html($name); ?></div>
+                                <div class="team-person-position date-color"><?php echo esc_html($designation); ?></div>
+                                <div class="separator"></div>
                                 <a class="team-link phone-link" href="tel:<?php echo esc_attr($phone); ?>">
                                     <i class="bi bi-telephone"></i> <?php echo esc_html($phone); ?>
-                                </a> 
+                                </a>
                                 <a class="team-link email-link" href="mailto:<?php echo esc_attr($email); ?>">
                                     <i class="bi bi-envelope"></i> <?php echo esc_html($email); ?>
-                                </a> 
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -194,8 +194,8 @@ $quality_mark = get_field('quality_mark');
                     // Query arguments for Testimonials CPT
                     $args = array(
                         'post_type'      => 'testimonial',
-                        'posts_per_page' => -1, 
-                        'order'          => 'DESC', 
+                        'posts_per_page' => -1,
+                        'order'          => 'DESC',
                         'orderby'        => 'date'
                     );
 

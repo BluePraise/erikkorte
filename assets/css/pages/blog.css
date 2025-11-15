@@ -1,0 +1,19 @@
+/* =============================================================================
+   Blog & Post Styles
+   Erik Korte Theme - Blog
+   ========================================================================== */
+
+/* Blog post styling will be extracted from main CSS */
+/* Placeholder for now - will be populated with blog-specific styles */
+
+.blog-post {
+    margin-bottom: 2rem;
+}
+
+.post-content {
+    line-height: 1.8;
+}
+
+.post-content .btn {
+    margin-top: 1rem;
+}

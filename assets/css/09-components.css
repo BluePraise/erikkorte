@@ -1,0 +1,275 @@
+/* =============================================================================
+   Components (Buttons, Forms, Cards, etc.)
+   Erik Korte Theme - Components
+   ========================================================================== */
+
+/* Buttons */
+.btn,
+.button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--theme-color-1);
+    color: #fff;
+    font-family: var(--header-font);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--theme-color-1);
+    border-radius: 4px;
+    transition: var(--transition);
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover,
+.button:hover {
+    background-color: transparent;
+    color: var(--theme-color-1);
+    border-color: var(--theme-color-1);
+}
+
+.btn-secondary {
+    background-color: var(--theme-color-2);
+    border-color: var(--theme-color-2);
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+    color: var(--theme-color-2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--theme-color-1);
+}
+
+.btn-outline:hover {
+    background-color: var(--theme-color-1);
+    color: #fff;
+}
+
+/* Page Title Block */
+.page-title-block {
+    background-size: cover;
+    background-position: center;
+    color: var(--bs-white);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+}
+
+.page-title-title h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* Breadcrumbs */
+#crumbs > * {
+    margin: 0 10px;
+    padding-bottom: 10px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+.breadcrumbs-container {
+    margin-top: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--bs-white);
+    padding: 6px 10px 10px;
+}
+
+.breadcrumbs-container a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+    border-bottom-color: transparent;
+}
+
+.breadcrumbs-container a:hover {
+    border-bottom-color: var(--bs-white);
+}
+
+.breadcrumbs {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.breadcrumbs .divider {
+    margin: 0 10px;
+}
+
+.breadcrumbs .current {
+    color: #f39c12;
+}
+
+/* Hero Banner */
+.hero-banner {
+    display: flex;
+    align-items: center;
+    min-height: 350px;
+    padding: 0 !important;
+    background-position: center;
+    position: relative;
+}
+
+.banner-heading {
+    margin-bottom: 0;
+}
+
+/* Icon Boxes */
+.quickfinder-item-box,
+.icon_box {
+    margin-top: 55px;
+    background-color: #fff;
+    border-color: #5f727f;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    padding: 55px;
+    padding-top: 85px;
+    text-align: center;
+}
+
+.quickfinder-item-box:hover,
+.icon_box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.quickfinder-item-title {
+    color: #4c5867;
+    line-height: 38px;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.quickfinder-item-text {
+    color: #5f727f;
+    font-family: var(--main-font);
+    margin-top: 14px;
+}
+
+.icon_box_info {
+    color: #fff;
+    width: 74px;
+    height: 74px;
+    line-height: 74px;
+    border-radius: 50%;
+    background-color: var(--theme-color-1);
+    font-size: 48px;
+    border-width: 4px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.icon_box_info:before,
+.icon_box_info:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 50%;
+    transform: scale(0);
+    border-radius: 50%;
+    background-color: rgba(179, 33, 31, 0.2);
+    -webkit-animation: pulse 2s infinite;
+    animation: pulse 2s infinite;
+}
+
+.icon_box_info:after {
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Count Numbers */
+.count_num {
+    width: 50px;
+    height: 50px;
+    line-height: 48px;
+    color: #ffffff;
+    background-color: var(--theme-color-1);
+    border-radius: 50%;
+    position: relative;
+    font-size: 30px;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 7px;
+    font-weight: 300;
+    font-family: var(--main-font);
+}
+
+.count2 {
+    background-color: #c52c2a;
+}
+
+.count3 {
+    background-color: #d83937;
+}
+
+/* Gem Textbox */
+.gem_textbox {
+    margin-top: 10px;
+    padding: 0 25px;
+}
+
+.gem_textbox p {
+    text-align: left;
+    font-family: var(--main-font);
+    margin: 10px 0 20px;
+}
+
+.custom_count {
+    text-align: end;
+    display: flex;
+    justify-content: end;
+}
+
+/* Quote Icon */
+.fa-quote-right {
+    font-size: 50px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .page-title-title h1 {
+        font-size: 2rem;
+    }
+
+    .quickfinder-item-box,
+    .icon_box {
+        padding: 30px;
+        padding-top: 60px;
+    }
+}

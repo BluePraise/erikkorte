@@ -21,7 +21,7 @@
     --transition: all 500ms ease;
     --font-awesome-free: "Font Awesome 6 Free";
     --font-awesome-brands: "Font Awesome 6 Brands";
-    --main-font: "Source Sans Pro", sans-serif;
+    --main-font: "Source Sans 3", sans-serif;
     --header-font: "Montserrat", sans-serif;
 }
 

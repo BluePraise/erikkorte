@@ -1,0 +1,20 @@
+/* =============================================================================
+   Erik Korte Uitvaartverzorging - Main Stylesheet
+   Modern modular CSS architecture
+   Version: 2.0.0
+   ========================================================================== */
+
+/* Import Base Styles */
+@import url('01-variables.css');
+@import url('02-reset.css');
+@import url('03-typography.css');
+@import url('04-global.css');
+@import url('05-media.css');
+@import url('06-bootstrap-grid.css');
+
+/* Import Layout Components */
+@import url('07-header.css');
+@import url('08-footer.css');
+@import url('09-components.css');
+
+/* Page-specific styles are loaded conditionally via functions.php */

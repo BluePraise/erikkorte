@@ -2,12 +2,71 @@
 
 add_theme_support('align-wide');
 add_theme_support('editor-styles');
-// include style css
-function load_stylesheets(){
-    wp_register_style('stylesheet', get_template_directory_uri() . '/style.css', '', 1, 'all');
-    wp_enqueue_style('stylesheet');
+
+/**
+ * Enqueue stylesheets - Modular CSS Architecture
+ * Version 2.0 - November 2025
+ */
+function erikkorte_enqueue_styles() {
+    // 1. WordPress required theme stylesheet (minimal, just header)
+    wp_enqueue_style('erikkorte-theme', get_stylesheet_uri(), [], '2.0.0');
+
+    // 2. Main modular stylesheet (imports all base styles)
+    wp_enqueue_style('erikkorte-main',
+        get_template_directory_uri() . '/assets/css/style-new.css',
+        ['erikkorte-theme'],
+        '2.0.0'
+    );
+
+    // 3. Conditional page-specific styles
+
+    // Homepage styles
+    if (is_front_page()) {
+        wp_enqueue_style('erikkorte-home',
+            get_template_directory_uri() . '/assets/css/pages/home.css',
+            ['erikkorte-main'],
+            '2.0.0'
+        );
+    }
+
+    // Blog and post styles
+    if (is_singular('post') || is_home() || is_category() || is_archive()) {
+        wp_enqueue_style('erikkorte-blog',
+            get_template_directory_uri() . '/assets/css/pages/blog.css',
+            ['erikkorte-main'],
+            '2.0.0'
+        );
+    }
+
+    // Contact page styles
+    if (is_page('contact') || is_page('meld-een-overlijden')) {
+        wp_enqueue_style('erikkorte-contact',
+            get_template_directory_uri() . '/assets/css/pages/contact.css',
+            ['erikkorte-main'],
+            '2.0.0'
+        );
+    }
+
+    // Condoleances styles
+    if (is_singular('cpt_condolances') || is_singular('condoleance') ||
+        is_post_type_archive('cpt_condolances') || is_post_type_archive('condoleance')) {
+        wp_enqueue_style('erikkorte-condoleances',
+            get_template_directory_uri() . '/assets/css/pages/condoleances.css',
+            ['erikkorte-main'],
+            '2.0.0'
+        );
+    }
+
+    // Testimonials styles
+    if (is_singular('testim_and_reviews') || is_post_type_archive('testim_and_reviews')) {
+        wp_enqueue_style('erikkorte-testimonials',
+            get_template_directory_uri() . '/assets/css/pages/testimonials.css',
+            ['erikkorte-main'],
+            '2.0.0'
+        );
+    }
 }
-add_action('wp_enqueue_scripts', 'load_stylesheets');
+add_action('wp_enqueue_scripts', 'erikkorte_enqueue_styles');
 
 
 // Register navigation menu
@@ -98,48 +157,48 @@ function register_custom_acf_block() {
         ));
 
         acf_register_block_type(array(
-            'name'              => 'inner-page-banner', 
-            'title'             => __('Inner Page Banner'), 
-            'description'       => __('A block to show the inne page banner in Erik Korte.'), 
-            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php', 
+            'name'              => 'inner-page-banner',
+            'title'             => __('Inner Page Banner'),
+            'description'       => __('A block to show the inne page banner in Erik Korte.'),
+            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php',
             'category'          => 'formatting',
-            'icon'              => 'groups', 
+            'icon'              => 'groups',
             'keywords'          => array('team', 'members', 'Erik Korte', 'acf'),
         ));
 
-     
+
         acf_register_block_type(array(
-            'name'              => 'team-erik-korte', 
-            'title'             => __('Team Erik Korte'), 
-            'description'       => __('A block to showcase the team members of Erik Korte.'), 
-            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php', 
+            'name'              => 'team-erik-korte',
+            'title'             => __('Team Erik Korte'),
+            'description'       => __('A block to showcase the team members of Erik Korte.'),
+            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php',
             'category'          => 'formatting',
-            'icon'              => 'groups', 
+            'icon'              => 'groups',
             'keywords'          => array('team', 'members', 'Erik Korte', 'acf'),
         ));
-        
-          
+
+
         acf_register_block_type(array(
-            'name'              => 'contact-us-page',  
-            'title'             => __('Contact us page'), 
-            'description'       => __('A block to allow users to add contact details in contact us page.'), 
-            'render_template'   => get_template_directory() . '/blocks/contact-us-page.php', 
-            'category'          => 'formatting', 
-            'icon'              => 'groups', 
-            'keywords'          => array('contact us', 'conatct', 'Erik Korte', 'acf'), 
+            'name'              => 'contact-us-page',
+            'title'             => __('Contact us page'),
+            'description'       => __('A block to allow users to add contact details in contact us page.'),
+            'render_template'   => get_template_directory() . '/blocks/contact-us-page.php',
+            'category'          => 'formatting',
+            'icon'              => 'groups',
+            'keywords'          => array('contact us', 'conatct', 'Erik Korte', 'acf'),
         ));
-        
-        
+
+
         acf_register_block_type(array(
             'name'              => 'image-gallery',  // Use the new block name 'service-cost'
             'title'             => __('Image Gallery'),  // Update the title to reflect the new block name
             'description'       => __('A block to display image gallery.'), // Modify description
             'render_template'   => get_template_directory() . '/blocks/image-gallery.php',  // Change the template to 'service-cost.php'
             'category'          => 'formatting', // The block category, adjust as needed
-            'icon'              => 'money',  
-            'keywords'          => array('image', 'gallery', 'acf'),  
+            'icon'              => 'money',
+            'keywords'          => array('image', 'gallery', 'acf'),
         ));
-        
+
 
         acf_register_block_type(array(
             'name'              => 'funeral-home-twente',  // New block name 'funeral-home-twente'
@@ -150,7 +209,7 @@ function register_custom_acf_block() {
             'icon'              => 'businessperson',  // Adjust icon if needed, you can choose another from the available WordPress icons
             'keywords'          => array('funeral', 'home', 'twente', 'acf', 'service'),  // Keywords for better block discovery
         ));
-        
+
 
 
 
@@ -175,7 +234,7 @@ function register_custom_acf_block() {
         $showCurrent = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
         $before = '<span class="current">'; // tag before the current crumb
         $after = '</span>'; // tag after the current crumb
-    
+
         global $post;
         $homeLink = get_bloginfo('url');
         if (is_home() || is_front_page()) {
@@ -288,26 +347,26 @@ function register_custom_acf_block() {
 add_action('acf/init', 'my_acf_init');
 
 function my_acf_init() {
-	
+
 	if( function_exists('acf_add_options_page') ) {
-		
+
 		$option_page = acf_add_options_page(array(
 			'page_title' 	=> __('Theme General Settings', 'my_text_domain'),
 			'menu_title' 	=> __('Theme Settings', 'my_text_domain'),
 			'menu_slug' 	=> 'theme-general-settings',
 		));
-		
+
 	}
-	
+
 }
 /* Theme Settings End */
 
 
-// Display current year 
+// Display current year
 function year_shortcode() {
 	$year = date_i18n('Y');
-	return $year; 
-} 
+	return $year;
+}
 add_shortcode('year', 'year_shortcode');
 
 
@@ -315,40 +374,46 @@ function custom_theme_widgets_init() {
     // Register a new widget area
     register_sidebar(array(
         'name'          => __('Widget 1', 'textdomain'),
-        'id'            => 'footer_widget_one', 
+        'id'            => 'footer_widget_one',
         'description'   => __('Widgets in this area will be shown in the custom location.', 'textdomain'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">', 
+        'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
     register_sidebar(array(
         'name'          => __('Widget 2', 'textdomain'),
-        'id'            => 'footer_widget_two', 
+        'id'            => 'footer_widget_two',
         'description'   => __('Widgets in this area will be shown in the custom location.', 'textdomain'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">', 
+        'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
 	register_sidebar(array(
         'name'          => __('Widget 3', 'textdomain'),
-        'id'            => 'footer_widget_three', 
+        'id'            => 'footer_widget_three',
         'description'   => __('Widgets in this area will be shown in the custom location.', 'textdomain'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">', 
+        'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ));
 }
 add_action('widgets_init', 'custom_theme_widgets_init');
 
 
-//Allow Font Awesome 
-add_action( 'wp_enqueue_scripts', 'tthq_add_custom_fa_css' );
-function tthq_add_custom_fa_css() {
-wp_enqueue_style( 'custom-fa', 'https://use.fontawesome.com/releases/v6.1.2/css/all.css' );
+// Allow Font Awesome
+add_action( 'wp_enqueue_scripts', 'add_custom_fa_css' );
+function add_custom_fa_css() {
+    wp_enqueue_style( 'custom-fa', 'https://use.fontawesome.com/releases/v6.1.2/css/all.css' );
 }
+
+// Add Google Fonts - Source Sans 3 (formerly Source Sans Pro) and Montserrat
+function add_google_fonts() {
+    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap', [], null );
+}
+add_action( 'wp_enqueue_scripts', 'add_google_fonts', 5 );
 
 //Allow Iframe in WYSIWYG Editor
 function allow_iframes_in_editor($init_array) {
@@ -375,7 +440,7 @@ add_filter('wp_kses_allowed_html', 'allow_iframe_in_wp_kses', 10, 2);
 
 // Add Featured Image column before the Title column, for 'post' and 'page' post types
 function add_featured_image_column_before_title($columns) {
-    global $typenow; 
+    global $typenow;
     if (in_array($typenow, ['post', 'page'])) {
         $new_columns = [];
         foreach ($columns as $key => $value) {
@@ -413,7 +478,7 @@ add_filter('manage_edit-post_sortable_columns', 'make_featured_image_column_sort
 add_filter('manage_edit-page_sortable_columns', 'make_featured_image_column_sortable');
 
 
-// Add Option To manuaaly add candles in Condoleance Register Post Type 
+// Add Option To manuaaly add candles in Condoleance Register Post Type
 
 
 /**
@@ -438,7 +503,7 @@ function condolence_meta_box_callback($post) {
 
     $candles = get_post_meta($post->ID, 'cmb_condalances_candles', 1);
     $candles = is_array($candles) ? $candles : ['count' => 0, 'authors' => []];
-    
+
     //Array ( [count] => 11 [authors] => 6 )
     // Get candle count
     $candle_count = isset($candles['count']) ? $candles['count'] : 0;

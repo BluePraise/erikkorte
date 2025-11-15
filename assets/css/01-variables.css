@@ -1,0 +1,38 @@
+/* =============================================================================
+   CSS Variables (Custom Properties)
+   Erik Korte Theme - Variables
+   ========================================================================== */
+
+:root {
+    /* Primary Theme Colors */
+    --theme-color-1: #b3211f;
+    --theme-color1-rgb: 179, 33, 31;
+    --theme-color-2: #757577;
+    --theme-gray-1: #8896A0;
+    --theme-color2-rgb: 117, 117, 119;
+    --theme-color3: #dde5eb;
+    --theme-color3-rgb: 221, 229, 235;
+    --theme-color4: #3c3950;
+    --theme-color4-rgb: 60, 57, 80;
+    --theme-color5: #504545;
+    --theme-color5-rgb: 80, 69, 69;
+
+    /* Base Colors */
+    --bs-black: #000000;
+    --body-color: #212331;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-white: #ffffff;
+    --bs-white-rgb: 255, 255, 255;
+
+    /* Gradients */
+    --color-gradient-1: linear-gradient(90deg, var(--theme-color-1) 0%, var(--theme-color-2) 100%);
+
+    /* Transitions */
+    --transition: all 500ms ease;
+
+    /* Fonts */
+    --font-awesome-free: "Font Awesome 6 Free";
+    --font-awesome-brands: "Font Awesome 6 Brands";
+    --main-font: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --header-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
