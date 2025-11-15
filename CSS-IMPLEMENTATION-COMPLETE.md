@@ -29,20 +29,32 @@ Created 8 core CSS modules + 5 page-specific files:
    - Wrapper/container
    - Utility classes
 
-5. **06-header.css** (286 lines)
+5. **05-media.css** (~370 lines)
+   - Image utilities (img-fluid, img-thumbnail, img-circle)
+   - WordPress media (wp-caption, figure)
+   - Responsive video/iframe containers
+   - Image hover effects
+   - Aspect ratio boxes
+
+6. **Bootstrap 5.3.8 (CDN)**
+   - Grid system (container, row, col-*)
+   - Utility classes (spacing, display, flex)
+   - Loaded via CDN in head.php
+   - Not counted in local CSS totals
+
+7. **07-header.css** (286 lines)
    - Topbar
-   - Bootstrap navbar (minimal, navigation only)
-   - Custom main-menu
+   - Custom main-menu navigation
    - Dropdown menus
    - Mobile menu
 
-6. **07-footer.css** (292 lines)
+8. **08-footer.css** (292 lines)
    - Footer widgets
    - Footer navigation
    - Social links
    - Bottom menu
 
-7. **08-components.css** (275 lines)
+9. **09-components.css** (275 lines)
    - Buttons
    - Page title blocks
    - Breadcrumbs
@@ -50,7 +62,7 @@ Created 8 core CSS modules + 5 page-specific files:
    - Icon boxes
    - Count numbers
 
-8. **style-new.css** (18 lines)
+10. **style-new.css** (18 lines)
    - Main orchestrator
    - @import statements for all modules
 

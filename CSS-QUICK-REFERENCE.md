@@ -10,9 +10,11 @@
 | Link colors, body defaults | `02-reset.css` |
 | Heading styles (h1-h6) | `03-typography.css` |
 | Site wrapper, utilities | `04-global.css` |
-| Header, topbar, navigation | `06-header.css` |
-| Footer, social links | `07-footer.css` |
-| Buttons, breadcrumbs, icons | `08-components.css` |
+| Images, video, media | `05-media.css` |
+| **Bootstrap grid/utils** | **CDN (head.php)** |
+| Header, topbar, navigation | `07-header.css` |
+| Footer, social links | `08-footer.css` |
+| Buttons, breadcrumbs, icons | `09-components.css` |
 
 ### Page-Specific Styles
 
@@ -82,20 +84,33 @@ if (is_page('yourpage')) {
 ## File Loading Order
 
 ```
-1. style.css (WP required)
+1. Bootstrap 5.3.8 (CDN - loaded in head.php)
    ↓
-2. style-new.css
+2. style.css (WP required)
+   ↓
+3. style-new.css
    ↓ imports ↓
    - 01-variables.css
    - 02-reset.css
    - 03-typography.css
    - 04-global.css
-   - 06-header.css
-   - 07-footer.css
-   - 08-components.css
+   - 05-media.css
+   - 07-header.css
+   - 08-footer.css
+   - 09-components.css
    ↓
-3. pages/[specific].css (conditional)
+4. pages/[specific].css (conditional)
 ```
+
+## Bootstrap Grid Usage
+
+Bootstrap 5.3.8 is loaded via CDN, providing:
+- **Grid**: `.container`, `.container-fluid`, `.row`, `.col-*`
+- **Spacing**: `.m-*`, `.p-*`, `.mt-*`, `.mb-*`, `.my-*`, etc.
+- **Display**: `.d-none`, `.d-flex`, `.d-block`, `.d-lg-*`, etc.
+- **Flex**: `.justify-content-*`, `.align-items-*`
+
+Use Bootstrap classes directly in templates - no local CSS needed for grid.
 
 ## Browser Cache
 

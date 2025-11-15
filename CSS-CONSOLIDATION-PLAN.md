@@ -99,6 +99,13 @@
 
 ### Action Plan for Bootstrap
 
+**DECISION: Use Bootstrap 5 CDN**
+- Bootstrap 5.3.8 loaded via CDN in `head.php`
+- Provides full grid system (container, row, col-*)
+- Includes utility classes (spacing, display, flex)
+- No local Bootstrap files needed
+- Automatically updated and cached by CDN
+
 #### Option A: Keep Minimal Bootstrap (Recommended)
 **File**: Create `assets/css/bootstrap-nav-only.css`
 ```css
