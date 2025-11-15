@@ -23,10 +23,10 @@ $quality_mark = get_field('quality_mark');
 ?>
 
 <!-- Hero Section -->
-<section class="erik hero bg-white">
+<section class="hero bg-white">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
+        <div class="row g-6">
+            <div class="col-12 col-lg-6">
                 <?php if ($hero_image): ?>
                     <img src="<?php echo esc_url($hero_image); ?>" class="img-fluid" alt="Hero Image">
                 <?php else: ?>
@@ -34,7 +34,7 @@ $quality_mark = get_field('quality_mark');
                 <?php endif; ?>
             </div>
 
-            <div class="col-lg-6 col-md-6">
+            <div class="col-12 col-lg-6 px-4 py-0">
                 <div class="homepage-intro">
                     <?php if ($intro_text): ?>
                         <div class="intro-welcome h4"><?php echo esc_html($intro_text); ?></div>
@@ -56,20 +56,24 @@ $quality_mark = get_field('quality_mark');
                 <!-- Gems Repeater Field -->
                 <div class="gem_textbox">
                     <?php if (have_rows('gem_text_section')): ?>
-                        <?php $i = 1; ?>
-                        <?php while (have_rows('gem_text_section')): the_row();
-                            $text = get_sub_field('gem_text'); // Text from repeater subfield
-                        ?>
-                            <div class="row">
-                                <div class="col-2 custom_count">
-                                    <div class="count_num"><?php echo esc_html($i); ?></div>
+                        <div class="row g-3"> <!-- Single row wrapper with gutter -->
+                            <?php $i = 1; ?>
+                            <?php while (have_rows('gem_text_section')): the_row();
+                                $text = get_sub_field('gem_text');
+                            ?>
+                                <div class="col-12"> <!-- Full width for each item -->
+                                    <div class="row align-items-start">
+                                        <div class="col-auto custom_count">
+                                            <div class="count_num"><?php echo esc_html($i); ?></div>
+                                        </div>
+                                        <div class="col">
+                                            <p class="mb-0"><?php echo esc_html($text); ?></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    <p><?php echo esc_html($text); ?></p>
-                                </div>
-                            </div>
-                            <?php $i++; ?>
-                        <?php endwhile; ?>
+                                <?php $i++; ?>
+                            <?php endwhile; ?>
+                        </div>
                     <?php else: ?>
                         <p>No content found in Gem Text Section.</p>
                     <?php endif; ?>
@@ -80,10 +84,9 @@ $quality_mark = get_field('quality_mark');
 </section>
 
 <!-- Services Section -->
-<section class="almelo">
+<section class="almelo services">
     <div class="container-fluid">
         <div class="wpb_wrapper">
-            <h1 class="section-title text-center"><?php echo esc_html($services_heading); ?></h1>
             <h2 class="section-title text-center"><?php echo esc_html($services_sub_heading); ?></h2>
             <p class="section-intro"><?php echo esc_html($services_description); ?></p>
         </div>
@@ -103,12 +106,12 @@ $quality_mark = get_field('quality_mark');
                     $services_url = get_sub_field('services_url');
                 ?>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <a href="<?php echo esc_url($services_url); ?>" class="links_info">
                             <div class="quickfinder-item-box">
                                 <div class="info_def">
                                     <div class="icon_box_info service-image">
-                                        <img src="<?php echo esc_url( $icon ); ?>">
+                                        <img src="<?php echo esc_url($icon); ?>">
                                     </div>
                                 </div>
                                 <div class="quickfinder-item-info">
@@ -119,7 +122,8 @@ $quality_mark = get_field('quality_mark');
                         </a>
                     </div>
 
-                <?php $i++; endwhile; ?>
+                <?php $i++;
+                endwhile; ?>
             <?php else: ?>
                 <p>No content found.</p>
             <?php endif; ?>
@@ -127,15 +131,15 @@ $quality_mark = get_field('quality_mark');
     </div>
 </section>
 <!-- Team Section -->
-<section class="our_team bg-white">
-    <div class="container-fluid">
+<section class="team bg-white py-5">
+    <div class="container-small">
         <div class="wpb_wrapper">
             <!-- Team Section Title and Description -->
             <h2 class="section-title text-center"><?php echo esc_html($team_heading); ?></h2>
             <p class="section-intro"><?php echo esc_html($team_description); ?></p>
         </div>
 
-        <div class="row">
+        <div class="row py-4 g-4">
             <?php
             // Check if the repeater field has rows of data (team members)
             if (have_rows('team_members')): ?>
@@ -149,32 +153,35 @@ $quality_mark = get_field('quality_mark');
                     $email = get_sub_field('member_email');
                     $phone = get_sub_field('member_phone');
                 ?>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div class="team-person">
+                    <div class="col-12 col-lg-6">
+                        <div class="team-member card text-center h-100">
                             <!-- Team Member Image -->
-                            <div class="team-person-image">
+                            <div class="team-member-image">
                                 <?php if ($profile_image): ?>
-                                    <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr($name); ?>">
+                                    <img class="card-img-top" src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr($name); ?>">
                                 <?php else: ?>
                                     <img src="default-profile-image.jpg" alt="Default Profile Image">
                                 <?php endif; ?>
                             </div>
 
                             <!-- Team Member Info -->
-                            <div class="team-person-info">
-                                <div class="team-person-name styled-subtitle"><?php echo esc_html($name); ?></div>
-                                <div class="team-person-position date-color"><?php echo esc_html($designation); ?></div>
+                            <div class="team-member-info card-body">
+                                <div class="card-title team-member-name styled-subtitle"><?php echo esc_html($name); ?></div>
+                                <div class="card-text team-member-position date-color"><?php echo esc_html($designation); ?></div>
                                 <div class="separator"></div>
-                                <a class="team-link phone-link" href="tel:<?php echo esc_attr($phone); ?>">
+                                <a class="card-text team-link phone-link" href="tel:<?php echo esc_attr($phone); ?>">
                                     <i class="bi bi-telephone"></i> <?php echo esc_html($phone); ?>
                                 </a>
-                                <a class="team-link email-link" href="mailto:<?php echo esc_attr($email); ?>">
+                                <a class="card-text team-link email-link" href="mailto:<?php echo esc_attr($email); ?>">
                                     <i class="bi bi-envelope"></i> <?php echo esc_html($email); ?>
                                 </a>
                             </div>
                         </div>
                     </div>
                 <?php endwhile; ?>
+                <div class="wpb_single_image quality-mark text-center mt-4">
+                    <img src="<?php echo esc_url($quality_mark); ?>" alt="Quality Mark">
+                </div>
             <?php else: ?>
                 <p>No team members found.</p>
             <?php endif; ?>
@@ -184,9 +191,7 @@ $quality_mark = get_field('quality_mark');
 <!-- Quality Mark And testimonials -->
 <section class="feedbacks bg-white">
     <div class="container-fluid">
-        <div class="wpb_single_image">
-            <img src="<?php echo esc_url($quality_mark); ?>" alt="Quality Mark">
-        </div>
+
         <div class="review_slider">
             <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">

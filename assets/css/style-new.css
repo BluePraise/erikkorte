@@ -10,7 +10,6 @@
 @import url('03-typography.css');
 @import url('04-global.css');
 @import url('05-media.css');
-@import url('06-bootstrap-grid.css');
 
 /* Import Layout Components */
 @import url('07-header.css');

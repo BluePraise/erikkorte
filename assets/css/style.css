@@ -431,45 +431,42 @@ header .navbar-expand-lg .navbar-nav .nav-item .dropdown-menu li a:hover {
 .wpb_wrapper {
     margin-bottom: 70px;
 }
-.our_team {
+.team {
     padding-top: 120px;
 }
-.team-person {
+.team-member {
     border: 1px solid #dfe5e8;
     border-bottom: 6px solid #b3211f;
     padding: 50px 30px;
     line-height: 25px;
     font-size: 16px;
 }
-.team-person-image {
+.team-member-image {
     max-width: 100%;
     vertical-align: top;
     margin-bottom: 45px;
 }
-.team-person-image img {
+.team-member-image img {
     margin: 0 auto;
     border-radius: 50%;
     display: block;
-    max-width: 100%;
     height: auto;
     max-width: 120px;
 }
-.team-person-name {
+.team-member-name {
     text-align: center;
     min-height: 75px;
     font-size: 36px;
     color: #3c3950;
     line-height: 37px;
     font-weight: 300;
-    font-family: "Source Sans 3", sans-serif;
 }
-.team-person-position {
+.team-member-position {
     font-size: 0.875em;
     margin-bottom: 3px;
     text-align: center;
     color: #99a9b5;
     margin: 0 0 28px;
-    font-family: "Source Sans 3", sans-serif;
 }
 .separator {
     border-bottom: 1px solid #e8e6e6;
@@ -481,8 +478,6 @@ header .navbar-expand-lg .navbar-nav .nav-item .dropdown-menu li a:hover {
     display: block;
     text-align: center;
     letter-spacing: 0.5px;
-    color: var(--theme-color-1);
-    font-family: "Source Sans 3", sans-serif;
     text-decoration: none;
 }
 .team-link:hover {
@@ -510,7 +505,6 @@ header .navbar-expand-lg .navbar-nav .nav-item .dropdown-menu li a:hover {
 }
 .review_slider p {
     font-size: 24px;
-    font-family: "Source Sans 3", sans-serif;
     font-weight: 100;
     line-height: 36px;
 }

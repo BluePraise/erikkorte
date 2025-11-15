@@ -159,6 +159,7 @@
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
+    margin: 20px 0 10px;
 }
 
 .quickfinder-item-text {
@@ -180,6 +181,15 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.icon_box_info img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
 }
 
 .icon_box_info:before,
@@ -194,8 +204,6 @@
     transform: scale(0);
     border-radius: 50%;
     background-color: rgba(179, 33, 31, 0.2);
-    -webkit-animation: pulse 2s infinite;
-    animation: pulse 2s infinite;
 }
 
 .icon_box_info:after {

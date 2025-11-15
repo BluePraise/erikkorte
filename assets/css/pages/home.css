@@ -6,6 +6,7 @@
 /* Homepage Intro */
 .hero {
     padding-top: 40px;
+    padding-bottom: 6rem;
 }
 
 .homepage-intro {
@@ -53,14 +54,36 @@
 }
 
 /* Almelo Section */
-.almelo {
+.services {
     background-image: url('https://erikkorte.nl/wp-content/uploads/2018/11/gray.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
     background-attachment: scroll;
-    padding-top: 280px;
-    padding-bottom: 150px;
+    padding-top: 6rem;
+    padding-bottom: 8rem;
+}
+
+.services .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.services .row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.services .links_info {
+    display: flex;
+    flex: 1;
+}
+
+.services .quickfinder-item-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .wpb_wrapper h1 {
