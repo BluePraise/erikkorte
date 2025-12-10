@@ -51,7 +51,7 @@ header p {
 }
 
 .site-header .main-menu li {
-    font-family: var(--header-font);
+    font-family: var(--heading-font);
     font-weight: 700;
     font-size: 14px;
     text-decoration: none;
@@ -67,7 +67,7 @@ header p {
     color: #3c3950;
     padding: 3px 8px;
     transition: color 0.3s, background-color 0.3s;
-    font-family: var(--header-font);
+    font-family: var(--heading-font);
 }
 
 .site-header .main-menu li.current-menu-parent > a,
