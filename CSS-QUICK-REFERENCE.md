@@ -43,7 +43,7 @@ Edit `01-variables.css`:
 ```css
 :root {
     --main-font: "Source Sans 3", sans-serif;
-    --header-font: "Montserrat", sans-serif;
+    --heading-font: "Montserrat", sans-serif;
 }
 ```
 

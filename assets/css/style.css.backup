@@ -22,7 +22,7 @@
     --font-awesome-free: "Font Awesome 6 Free";
     --font-awesome-brands: "Font Awesome 6 Brands";
     --main-font: "Source Sans 3", sans-serif;
-    --header-font: "Montserrat", sans-serif;
+    --heading-font: "Montserrat", sans-serif;
 }
 
 ::-moz-selection {
@@ -70,7 +70,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--header-font);
+    font-family: var(--heading-font);
     font-weight: 700;
     color: #333;
 }
