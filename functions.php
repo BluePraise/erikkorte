@@ -105,6 +105,18 @@ function erikkorte_enqueue_assets() {
         "jQuery(function(){ if(window.lightbox && lightbox.option){ lightbox.option({ resizeDuration: 200, wrapAround: true }); } });"
     );
 
+    // Theme custom JS (mobile menu)
+    $theme_js = get_template_directory() . '/assets/js/erikkorte-theme.js';
+    if (file_exists($theme_js)) {
+        wp_enqueue_script(
+            'erikkorte-theme',
+            get_template_directory_uri() . '/assets/js/erikkorte-theme.js',
+            array('jquery'),
+            filemtime($theme_js),
+            true
+        );
+    }
+
     // 6. CONDITIONAL PAGE-SPECIFIC STYLES (Bootstrap overrides only)
     // All depend on 'erikkorte-base' which includes Bootstrap utilities
 

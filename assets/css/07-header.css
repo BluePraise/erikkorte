@@ -41,7 +41,6 @@ header p {
 }
 
 /* Custom Main Nav (Non-Bootstrap) */
-
 .custom-logo-link {
     max-width: 132px;
     display: inline-block;
@@ -133,13 +132,6 @@ header p {
     color: var(--theme-color-1);
 }
 
-.site-header .main-menu li:hover .sub-menu {
-    visibility: visible;
-    transition: transform 0.3s linear, opacity 0.3s linear, visibility 0.3s linear;
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .site-header .main-menu > li {
     --spacing: 33px;
     padding-top: var(--spacing);
@@ -151,7 +143,10 @@ header p {
     display: none;
     cursor: pointer;
     font-size: 30px;
-    color: #3c3950;
+    color: var(--theme-color-2);
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* Mobile Responsive Styles - Bootstrap lg breakpoint (< 992px) */
@@ -164,9 +159,18 @@ header p {
         display: none;
     }
 
-    .sub-menu {
+    .sub-menu:not(.active) {
         display: none;
         padding: 0 !important;
+    }
+
+    .sub-menu.active {
+        display: block;
+        position: static;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
     }
 
     nav.main-nav {
@@ -177,7 +181,7 @@ header p {
         justify-content: space-between;
     }
 
-    ul#menu-main-menu {
+    .site-header .main-menu {
         position: absolute;
         top: 110px;
         width: calc(100% - 30px) !important;
@@ -196,7 +200,7 @@ header p {
         margin-right: 0;
     }
 
-    .site-header ul#menu-main-menu .menu-item-has-children > a:before {
+    .site-header .main-menu .menu-item-has-children > a:before {
         content: '\f054';
         font-family: 'FontAwesome';
         position: absolute;
@@ -239,5 +243,13 @@ header p {
 @media screen and (min-width: 992px) {
     .mobile_menubtn {
         display: none;
+    }
+
+    /* Desktop hover dropdown behavior */
+    .site-header .main-menu li:hover .sub-menu {
+        visibility: visible;
+        transition: transform 0.2s, opacity 0.2s, visibility 0.2s;
+        opacity: 1;
+        transform: translateY(0);
     }
 }

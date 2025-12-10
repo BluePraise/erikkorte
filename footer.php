@@ -1,6 +1,6 @@
 </main>
 <footer class="site-footer">
-    <div class="container-fluid py-5">
+    <div class="container-fluid p-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <h3 class="widget-title"><?php the_field('over_ons', 'option'); ?> </h3>
@@ -64,61 +64,6 @@
 </footer>
 
 </div><!-- .site-wrapper -->
-<?php // Assets are enqueued via wp_enqueue_scripts in functions.php ?>
-
-<?php // Fancybox removed; using Lightbox2 only ?>
-
-<script>
-    jQuery(document).ready(function($) {
-        // Check if the screen size is 991px or less
-        function initMenuScript() {
-            if (window.matchMedia("(max-width: 991px)").matches) {
-                // Mobile menu toggle
-                $('.mobile_menubtn').click(function() {
-                    $('.main-menu').toggle('slow');
-                    // Toggle the icons between hamburger and cross
-                    $(this).find('i').toggleClass('fa-bars fa-times');
-                });
-
-                // Handle submenu toggle
-                $('.menu-item-has-children > a').on('click', function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-
-                    $('.main-menu > li').not($(this).parent()).hide();
-                    // Hide the clicked <a> element
-                    $(this).hide();
-
-                    const submenu = $(this).siblings('.sub-menu');
-                    submenu.addClass('active').slideDown();
-
-                    if (!submenu.find('.back-btn').length) {
-                        submenu.prepend('<li class="back-btn"><a href="#">Back</a></li>');
-                    }
-                });
-
-                // Handle back button click
-                $('.main-menu').on('click', '.back-btn a', function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-
-                    $(this).closest('.sub-menu').removeClass('active').slideUp();
-
-                    $('.main-menu > li').show();
-                    // Show the <a> element of the clicked parent item again
-                    $(this).closest('.sub-menu').siblings('a').show();
-                });
-            }
-        }
-
-        // Initialize the menu script
-        initMenuScript();
-
-        // Recheck screen size on window resize
-        $(window).resize(function() {
-            initMenuScript();
-        });
-    });
-</script>
-<?php // Lightbox is initialized via wp_add_inline_script in functions.php ?>
 
 <?php wp_footer(); ?>
 </body>

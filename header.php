@@ -15,7 +15,7 @@ get_template_part('template-parts/header/head');
                 } else {
                     echo '<h1>' . get_bloginfo('name') . '</h1>';
                 }
-                echo '<div class="mobile_menubtn"><i class="fa-solid fa-bars"></i></div>';
+                echo '<button class="mobile_menubtn" aria-label="Menu" aria-expanded="false" type="button"><i class="fa-solid fa-bars"></i></button>';
                 wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container' => 'ul',
