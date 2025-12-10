@@ -1,38 +1,40 @@
-<footer>
-    <div class="container-fluid">
+</main>
+<footer class="site-footer">
+    <div class="container-fluid py-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <h3 class="widget-title"><?php the_field('over_ons', 'option'); ?> </h3>
                 <div class="textwidget">
                     <?php the_field('over_ons_text', 'option'); ?>
                     <p class="text-center">
-                        <a href="<?php the_field('logo_image_url', 'option'); ?>">
-                            <img src="<?php the_field('logo_image', 'option'); ?>">
+                        <a href="<?php echo esc_url(get_field('logo_image_url', 'option')); ?>" aria-label="<?php echo esc_attr(get_field('over_ons', 'option')); ?>">
+                            <img src="<?php echo esc_url(get_field('logo_image', 'option')); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?> logo" loading="lazy">
                         </a>
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <h3 class="widget-title">Snel naar: </h3>
-                <?php
-                // Display a menu with ID 'footer-quick'
-                wp_nav_menu(array(
-                    'menu'           => 'footer-quick',
-                    'container'      => 'nav',
-                    'container_class' => 'footer-quick-menu',
-                    'menu_class'     => 'f_list',
-                    'fallback_cb'    => false
-                ));
-                ?>
+                <nav class="footer-quick-menu" aria-label="Footer navigation">
+                    <?php
+                    // Display a menu with ID 'footer-quick'
+                    wp_nav_menu(array(
+                        'menu'           => 'footer-quick',
+                        'container'      => false,
+                        'menu_class'     => 'f_list',
+                        'fallback_cb'    => false
+                    ));
+                    ?>
+                </nav>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <h3 class="widget-title"><?php the_field('address_title', 'option'); ?> </h3>
                 <div class="textwidget">
-                    <?php the_field('address_detail', 'option'); ?>
-                    <p>Telefoon: <a href="tel:<?php the_field('phone_number', 'option'); ?>"><?php the_field('phone_number', 'option'); ?></a><br>
-                        E-mail: <i class="fa fa-envelope"></i> <a href="mailto:<?php the_field('email_address', 'option'); ?>"><?php the_field('email_address', 'option'); ?></a><br>
-                        Website: <a href="<?php the_field('website_link', 'option'); ?>"><?php the_field('website_link', 'option'); ?></a></p>
+                    <?php echo wp_kses_post(get_field('address_detail', 'option')); ?>
+                    <p>Telefoon: <a href="tel:<?php echo esc_attr(get_field('phone_number', 'option')); ?>" aria-label="Bel ons op <?php echo esc_attr(get_field('phone_number', 'option')); ?>"><?php echo esc_html(get_field('phone_number', 'option')); ?></a><br>
+                        E-mail: <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo esc_attr(get_field('email_address', 'option')); ?>" aria-label="Stuur een e-mail naar <?php echo esc_attr(get_field('email_address', 'option')); ?>"><?php echo esc_html(get_field('email_address', 'option')); ?></a><br>
+                        Website: <a href="<?php echo esc_url(get_field('website_link', 'option')); ?>" rel="nofollow noopener" target="_blank" aria-label="Bezoek onze website op <?php echo esc_attr(get_field('website_link', 'option')); ?>"><?php echo esc_html(get_field('website_link', 'option')); ?></a></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -43,52 +45,28 @@
             </div>
         </div>
     </div>
-</footer>
-<div class="footer-nav">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 order_3">
-                <div class="footer-socials">
+    <div class="colophon">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-3 order_1 footer-site-info">
+                    <?php the_field('copyright', 'option'); ?>
+                </div>
+                <div class="footer-socials col-lg-3 col-md-3 order_3 ms-auto text-end">
                     <div class="socials inline-inside socials-colored">
-                        <a href="<?php the_field('facebook_url', 'option'); ?>" target="_blank" title="Facebook" class="socials-item">
-                            <i class="fa-brands fa-facebook-f"></i> Follow Us
+                        <a href="<?php the_field('facebook_url', 'option'); ?>" target="_blank" rel="noopener" aria-label="Volg ons op Facebook" class="socials-item">
+                            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> <span class="visually-hidden">Facebook</span> Follow Us
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 order_2">
-                <?php if (is_active_sidebar('footer_widget_one')) : ?>
-                    <?php dynamic_sidebar('footer_widget_one'); ?>
-                <?php endif; ?>
-            </div>
-            <div class="col-lg-3 col-md-3 order_1">
-                <div class="footer-site-info"><?php the_field('copyright', 'option'); ?></div>
-            </div>
         </div>
-    </div>
-</div>
-</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox.min.js"></script>
+    </div><!-- .colophon -->
+</footer>
 
-<script>
-    // Fancybox Config
-    $('[data-fancybox="gallery"]').fancybox({
-        buttons: [
-            "slideShow",
-            "thumbs",
-            "zoom",
-            "fullScreen",
-            "share",
-            "close"
-        ],
-        loop: false,
-        protect: true
-    });
-</script>
+</div><!-- .site-wrapper -->
+<?php // Assets are enqueued via wp_enqueue_scripts in functions.php ?>
+
+<?php // Fancybox removed; using Lightbox2 only ?>
 
 <script>
     jQuery(document).ready(function($) {
@@ -140,14 +118,7 @@
         });
     });
 </script>
-<script>
-    jQuery(document).ready(function() {
-        lightbox.option({
-            'resizeDuration': 200,
-            'wrapAround': true
-        })
-    });
-</script>
+<?php // Lightbox is initialized via wp_add_inline_script in functions.php ?>
 
 <?php wp_footer(); ?>
 </body>

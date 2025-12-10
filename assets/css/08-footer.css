@@ -1,16 +1,17 @@
 /* =============================================================================
    Footer
-   Erik Korte Theme - Footer
    ========================================================================== */
 
 footer,
 .site-footer {
     position: relative;
-    padding: 110px 0 45px;
     background-color: #212331;
 }
 
-/* Footer Widgets */
+/* Footer Widgets
+ * TODO: Replace with Bootstrap classes:
+ * .widget-title → .h5 .text-uppercase .fw-bold .mb-4 .text-white
+ */
 .widget-title {
     margin-bottom: 40px;
     color: #feffff;
@@ -26,13 +27,10 @@ footer,
 }
 
 .widget-title i::before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
+/* TODO: Replace with .text-muted in templates */
 .textwidget p {
     color: #99a9b5;
     font-family: var(--main-font);
@@ -49,7 +47,12 @@ footer,
     text-decoration: underline;
 }
 
-/* Footer Lists */
+/* Footer Lists
+ * TODO: Replace with Bootstrap classes in templates:
+ * .f_list → .list-unstyled .border .border-secondary
+ * .f_list li → .border-top .border-secondary .p-3
+ * Links should use .text-light .text-decoration-none
+ */
 .f_list,
 footer .menu {
     border-right: 1px solid #394050;
@@ -79,8 +82,6 @@ footer .menu li a {
     font-weight: normal;
     font-size: 14px;
     color: #dde5eb;
-    -o-transition: all 0.2s linear;
-    -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
     text-decoration: none;
 }
@@ -138,8 +139,10 @@ footer .menu li:before {
     text-decoration: underline;
 }
 
-/* Footer Navigation Bar */
-.footer-nav {
+/* Colophon at the bottom of footer
+ * TODO: Add .d-flex .justify-content-between .align-items-center to container
+ */
+.colophon {
     padding: 40px 0;
     border-top: 1px solid #313646;
     background-color: #181828;
@@ -148,6 +151,7 @@ footer .menu li:before {
     align-items: center;
 }
 
+/* TODO: Use .ms-auto .text-end on container (already done in footer.php) */
 .footer-socials {
     text-align: right;
 }
@@ -161,12 +165,11 @@ footer .menu li:before {
     line-height: 0;
 }
 
+/* TODO: Consider Bootstrap .btn .btn-link utility */
 a.socials-item {
     display: inline-block;
     vertical-align: top;
     text-align: center;
-    -o-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
     margin: 0 5px;
     line-height: 16px;

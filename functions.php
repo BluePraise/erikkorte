@@ -1,75 +1,187 @@
 <?php
-
-add_theme_support('align-wide');
-add_theme_support('editor-styles');
+/**
+ * Erik Korte Theme Functions
+ * Bootstrap-first architecture with modular CSS
+ * Version 3.0 - December 2025
+ */
 
 /**
- * Enqueue stylesheets - Modular CSS Architecture
- * Version 2.0 - November 2025
+ * Enqueue front-end assets - Consolidated Bootstrap + Lightbox
+ * All page-specific CSS depends on Bootstrap for consistency
  */
-function erikkorte_enqueue_styles() {
-    // 1. WordPress required theme stylesheet (minimal, just header)
-    wp_enqueue_style('erikkorte-theme', get_stylesheet_uri(), [], '2.0.0');
-
-    // 2. Main modular stylesheet (imports all base styles)
-    wp_enqueue_style('erikkorte-main',
-        get_template_directory_uri() . '/assets/css/style-new.css',
-        ['erikkorte-theme'],
-        '2.0.0'
+function erikkorte_enqueue_assets() {
+    // 1. LINE AWESOME ICONS (Icons8 CDN - loaded first in header)
+    wp_enqueue_style(
+        'line-awesome',
+        'https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css',
+        array(),
+        '1.3.0'
     );
 
-    // 3. Conditional page-specific styles
+    // 2. BOOTSTRAP CSS (Single source of truth - v5.3.8)
+    wp_enqueue_style(
+        'bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css',
+        array(),
+        '5.3.8'
+    );
 
-    // Homepage styles
-    if (is_front_page()) {
-        wp_enqueue_style('erikkorte-home',
+    // 3. THEME BASE CSS (Core variables and global styles)
+    $base_css = get_template_directory() . '/assets/css/base.css';
+    if (file_exists($base_css)) {
+        wp_enqueue_style(
+            'erikkorte-base',
+            get_template_directory_uri() . '/assets/css/base.css',
+            array('bootstrap-css'),
+            filemtime($base_css)
+        );
+    }
+
+    // 3a. HEADER CSS (Loaded site-wide)
+    $header_css = get_template_directory() . '/assets/css/07-header.css';
+    if (file_exists($header_css)) {
+        wp_enqueue_style(
+            'erikkorte-header',
+            get_template_directory_uri() . '/assets/css/07-header.css',
+            array('erikkorte-base'),
+            filemtime($header_css)
+        );
+    }
+
+    // 3b. FOOTER CSS (Loaded site-wide)
+    $footer_css = get_template_directory() . '/assets/css/08-footer.css';
+    if (file_exists($footer_css)) {
+        wp_enqueue_style(
+            'erikkorte-footer',
+            get_template_directory_uri() . '/assets/css/08-footer.css',
+            array('erikkorte-base'),
+            filemtime($footer_css)
+        );
+    }
+
+    // 3c. COMPONENTS CSS (Loaded site-wide)
+    $components_css = get_template_directory() . '/assets/css/09-components.css';
+    if (file_exists($components_css)) {
+        wp_enqueue_style(
+            'erikkorte-components',
+            get_template_directory_uri() . '/assets/css/09-components.css',
+            array('erikkorte-base'),
+            filemtime($components_css)
+        );
+    }
+
+    // 4. LIGHTBOX CSS (for image galleries)
+    wp_enqueue_style(
+        'lightbox-css',
+        'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css',
+        array('bootstrap-css'),
+        '2.11.5'
+    );
+
+    // 5. JAVASCRIPT - WordPress jQuery + Bootstrap + Lightbox
+    wp_enqueue_script('jquery'); // WordPress bundled version
+
+    // Bootstrap JS Bundle (includes Popper) - v5.3.8
+    wp_enqueue_script(
+        'bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js',
+        array('jquery'),
+        '5.3.8',
+        true
+    );
+
+    // Lightbox JS (CDN)
+    wp_enqueue_script(
+        'lightbox-js',
+        'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox.min.js',
+        array('jquery'),
+        '2.11.5',
+        true
+    );
+
+    // Initialize Lightbox with custom options
+    wp_add_inline_script(
+        'lightbox-js',
+        "jQuery(function(){ if(window.lightbox && lightbox.option){ lightbox.option({ resizeDuration: 200, wrapAround: true }); } });"
+    );
+
+    // 6. CONDITIONAL PAGE-SPECIFIC STYLES (Bootstrap overrides only)
+    // All depend on 'erikkorte-base' which includes Bootstrap utilities
+
+    // Home / Front page
+    $home_css = get_template_directory() . '/assets/css/pages/home.css';
+    if ((is_front_page() || is_home()) && file_exists($home_css)) {
+        wp_enqueue_style(
+            'erikkorte-page-home',
             get_template_directory_uri() . '/assets/css/pages/home.css',
-            ['erikkorte-main'],
-            '2.0.0'
+            array('erikkorte-base'),
+            filemtime($home_css)
         );
     }
 
-    // Blog and post styles
-    if (is_singular('post') || is_home() || is_category() || is_archive()) {
-        wp_enqueue_style('erikkorte-blog',
+    // Blog index and single posts
+    $blog_css = get_template_directory() . '/assets/css/pages/blog.css';
+    if ((is_home() || is_archive() || is_single()) && file_exists($blog_css)) {
+        wp_enqueue_style(
+            'erikkorte-page-blog',
             get_template_directory_uri() . '/assets/css/pages/blog.css',
-            ['erikkorte-main'],
-            '2.0.0'
+            array('erikkorte-base'),
+            filemtime($blog_css)
         );
     }
 
-    // Contact page styles
-    if (is_page('contact') || is_page('meld-een-overlijden')) {
-        wp_enqueue_style('erikkorte-contact',
+    // Contact page by slug or template
+    $contact_css = get_template_directory() . '/assets/css/pages/contact.css';
+    if ((is_page('contact') || is_page('meld-een-overlijden') || is_page_template('template-parts/contact-page.php')) && file_exists($contact_css)) {
+        wp_enqueue_style(
+            'erikkorte-page-contact',
             get_template_directory_uri() . '/assets/css/pages/contact.css',
-            ['erikkorte-main'],
-            '2.0.0'
+            array('erikkorte-base'),
+            filemtime($contact_css)
         );
     }
 
-    // Condoleances styles
-    if (is_singular('cpt_condolances') || is_singular('condoleance') ||
-        is_post_type_archive('cpt_condolances') || is_post_type_archive('condoleance')) {
-        wp_enqueue_style('erikkorte-condoleances',
+    // Condoleances listing/single (Plugin post type: 'condoleance')
+    $condoleances_css = get_template_directory() . '/assets/css/pages/condoleances.css';
+    if ((is_post_type_archive('condoleance') || is_singular('condoleance')) && file_exists($condoleances_css)) {
+        wp_enqueue_style(
+            'erikkorte-page-condoleances',
             get_template_directory_uri() . '/assets/css/pages/condoleances.css',
-            ['erikkorte-main'],
-            '2.0.0'
+            array('erikkorte-base'),
+            filemtime($condoleances_css)
         );
     }
 
-    // Testimonials styles
-    if (is_singular('testim_and_reviews') || is_post_type_archive('testim_and_reviews')) {
-        wp_enqueue_style('erikkorte-testimonials',
+    // Testimonials page and CPT
+    $testimonials_css = get_template_directory() . '/assets/css/pages/testimonials.css';
+    if ((is_page_template('template-parts/page-testimonials.php') || is_singular('testim_and_reviews') || is_post_type_archive('testim_and_reviews')) && file_exists($testimonials_css)) {
+        wp_enqueue_style(
+            'erikkorte-page-testimonials',
             get_template_directory_uri() . '/assets/css/pages/testimonials.css',
-            ['erikkorte-main'],
-            '2.0.0'
+            array('erikkorte-base'),
+            filemtime($testimonials_css)
         );
     }
 }
-add_action('wp_enqueue_scripts', 'erikkorte_enqueue_styles');
+add_action('wp_enqueue_scripts', 'erikkorte_enqueue_assets');
 
+// Font Awesome (enqueued separately for icon support)
+add_action('wp_enqueue_scripts', 'add_custom_fa_css');
+function add_custom_fa_css() {
+    wp_enqueue_style('custom-fa', 'https://use.fontawesome.com/releases/v6.1.2/css/all.css', array(), '6.1.2');
+}
 
-// Register navigation menu
+// Google Fonts (Source Sans 3 and Montserrat)
+function add_google_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap', array(), null);
+}
+add_action('wp_enqueue_scripts', 'add_google_fonts', 5);
+
+// WordPress theme supports
+add_theme_support('align-wide');
+add_theme_support('editor-styles');
+
+// Register navigation menus
 register_nav_menu('main-menu', 'Main Menu');
 register_nav_menu('footer-menu', 'Footer Menu');
 register_nav_menu('footer-quick', 'Quick Menu');
@@ -403,19 +515,7 @@ function custom_theme_widgets_init() {
 add_action('widgets_init', 'custom_theme_widgets_init');
 
 
-// Allow Font Awesome
-add_action( 'wp_enqueue_scripts', 'add_custom_fa_css' );
-function add_custom_fa_css() {
-    wp_enqueue_style( 'custom-fa', 'https://use.fontawesome.com/releases/v6.1.2/css/all.css' );
-}
-
-// Add Google Fonts - Source Sans 3 (formerly Source Sans Pro) and Montserrat
-function add_google_fonts() {
-    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap', [], null );
-}
-add_action( 'wp_enqueue_scripts', 'add_google_fonts', 5 );
-
-//Allow Iframe in WYSIWYG Editor
+// Allow Iframe in WYSIWYG Editor
 function allow_iframes_in_editor($init_array) {
     $init_array['extended_valid_elements'] = 'iframe[src|frameborder|style|scrolling|class|width|height|name|align]';
     return $init_array;
@@ -477,124 +577,13 @@ function make_featured_image_column_sortable($columns) {
 add_filter('manage_edit-post_sortable_columns', 'make_featured_image_column_sortable');
 add_filter('manage_edit-page_sortable_columns', 'make_featured_image_column_sortable');
 
-
-// Add Option To manuaaly add candles in Condoleance Register Post Type
-
-
 /**
- * Add repeater field for name and date/time
+ * NOTE: Condoleance Register is now a PLUGIN
+ * Meta boxes and candle management are handled by:
+ * - /plugins/condoleance-register/includes/post-types/class-condoleance.php
+ * - /plugins/condoleance-register/includes/frontend/class-candles.php
+ *
+ * The old meta box code has been REMOVED to avoid conflicts.
+ * Post type is 'condoleance' (not 'cpt_condolances')
  */
-
- function condolence_add_meta_box() {
-    add_meta_box(
-        'condolence_meta_box', // ID of the meta box
-        'Candles Details',  // Title of the meta box
-        'condolence_meta_box_callback', // Callback function
-        'cpt_condolances', // Post type
-        'normal', // Context
-        'high' // Priority
-    );
-}
-add_action('add_meta_boxes', 'condolence_add_meta_box');
-
-function condolence_meta_box_callback($post) {
-    // Nonce for security
-    wp_nonce_field('condolence_save_meta_box_data', 'condolence_meta_box_nonce');
-
-    $candles = get_post_meta($post->ID, 'cmb_condalances_candles', 1);
-    $candles = is_array($candles) ? $candles : ['count' => 0, 'authors' => []];
-
-    //Array ( [count] => 11 [authors] => 6 )
-    // Get candle count
-    $candle_count = isset($candles['count']) ? $candles['count'] : 0;
-
-    ?>
-    <!-- Candle Count Input -->
-    <label for="candle_count">Candle Count:</label>
-    <input type="number" id="candle_count" name="candle_count" value="<?php echo esc_attr($candle_count); ?>" />
-
-    <!-- Repeater Container -->
-    <div id="repeater-container">
-        <?php
-        if (!empty($candles['authors']) && is_array($candles['authors']) ) {
-            foreach (array_reverse($candles['authors']) as $candleName) {
-                if(is_array($candleName) && isset($candleName['candle_name']) && isset($candleName['candle_date']) ){
-                ?>
-                <div class="repeater-row">
-                    <input type="text" name="condolence_name[]" placeholder="Name" value="<?php echo esc_attr($candleName['candle_name']); ?>" />
-                    <input type="text" name="condolence_date[]" value="<?php echo esc_attr($candleName['candle_date']); ?>" />
-                    <button type="button" class="remove-row">Remove</button>
-                </div>
-                <?php
-                }
-            }
-        }
-        ?>
-    </div>
-    <button type="button" id="add-row">Light a Candle</button>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const container = document.querySelector('#repeater-container');
-            const addRow = document.querySelector('#add-row');
-
-            addRow.addEventListener('click', function () {
-                const row = document.createElement('div');
-                row.classList.add('repeater-row');
-                row.innerHTML = `
-                    <input type="text" name="condolence_name[]" placeholder="Name" />
-                    <input type="text" name="condolence_date[]" />
-                    <button type="button" class="remove-row">Remove</button>
-                `;
-                container.appendChild(row);
-
-                row.querySelector('.remove-row').addEventListener('click', function () {
-                    row.remove();
-                });
-            });
-
-            container.addEventListener('click', function (e) {
-                if (e.target && e.target.classList.contains('remove-row')) {
-                    e.target.parentNode.remove();
-                }
-            });
-        });
-    </script>
-    <?php
-}
-
-function condolence_save_meta_box_data($post_id) {
-    // Verify nonce
-    if (!isset($_POST['condolence_meta_box_nonce']) || !wp_verify_nonce($_POST['condolence_meta_box_nonce'], 'condolence_save_meta_box_data')) {
-        return;
-    }
-
-    // Check for autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    // Check user permissions
-    if (!current_user_can('edit_post', $post_id)) {
-        return;
-    }
-
-    // Collect and sanitize candle count
-    $candle_count = isset($_POST['candle_count']) ? intval($_POST['candle_count']) : 0;
-
-    // Collect and sanitize repeater data
-    $candles_data = ['count' => $candle_count, 'authors' => []];
-    if (isset($_POST['condolence_name']) && isset($_POST['condolence_date'])) {
-        foreach ($_POST['condolence_name'] as $index => $name) {
-            $candles_data['authors'][] = [
-                'candle_name' => sanitize_text_field($name),
-                'candle_date' => sanitize_text_field($_POST['condolence_date'][$index]),
-            ];
-        }
-    }
-
-    // Save meta data
-    update_post_meta($post_id, 'cmb_condalances_candles', $candles_data);
-}
-add_action('save_post', 'condolence_save_meta_box_data');
 

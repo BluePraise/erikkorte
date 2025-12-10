@@ -3,7 +3,15 @@
    Erik Korte Theme - Components
    ========================================================================== */
 
-/* Buttons */
+/* Buttons
+ * TODO: Migrate to Bootstrap button classes in templates:
+ * .btn or .button → .btn .btn-danger
+ * .btn-secondary → .btn .btn-secondary
+ * .btn-outline → .btn .btn-outline-danger
+ *
+ * Bootstrap provides: .btn-sm, .btn-lg for sizing
+ * These custom styles provide theme-specific overrides
+ */
 .btn,
 .button {
     display: inline-block;
@@ -29,6 +37,7 @@
     border-color: var(--theme-color-1);
 }
 
+/* Keep these for backwards compatibility, but prefer Bootstrap variants */
 .btn-secondary {
     background-color: var(--theme-color-2);
     border-color: var(--theme-color-2);
@@ -49,7 +58,11 @@
     color: #fff;
 }
 
-/* Page Title Block */
+/* Page Title Block
+ * TODO: Replace with Bootstrap utilities:
+ * .page-title-block → .py-5 .text-center .position-relative (add bg-cover custom class)
+ * .page-title-title h1 → .display-3 .fw-bold .text-uppercase .text-white .mb-4
+ */
 .page-title-block {
     background-size: cover;
     background-position: center;
@@ -67,7 +80,15 @@
     color: #fff;
 }
 
-/* Breadcrumbs */
+/* Breadcrumbs
+ * TODO: Replace #crumbs with Bootstrap breadcrumb component:
+ * <nav aria-label="breadcrumb">
+ *   <ol class="breadcrumb">
+ *     <li class="breadcrumb-item"><a href="/">Home</a></li>
+ *     <li class="breadcrumb-item active">Current</li>
+ *   </ol>
+ * </nav>
+ */
 #crumbs > * {
     margin: 0 10px;
     padding-bottom: 10px;

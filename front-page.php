@@ -132,7 +132,7 @@ $quality_mark = get_field('quality_mark');
 </section>
 <!-- Team Section -->
 <section class="team bg-white py-5">
-    <div class="container-small">
+    <div class="container-fluid">
         <div class="wpb_wrapper">
             <!-- Team Section Title and Description -->
             <h2 class="section-title text-center"><?php echo esc_html($team_heading); ?></h2>
@@ -153,7 +153,7 @@ $quality_mark = get_field('quality_mark');
                     $email = get_sub_field('member_email');
                     $phone = get_sub_field('member_phone');
                 ?>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-3">
                         <div class="team-member card text-center h-100">
                             <!-- Team Member Image -->
                             <div class="team-member-image">
@@ -165,7 +165,7 @@ $quality_mark = get_field('quality_mark');
                             </div>
 
                             <!-- Team Member Info -->
-                            <div class="team-member-info card-body">
+                            <div class="team-member-info card-body p-0">
                                 <div class="card-title team-member-name styled-subtitle"><?php echo esc_html($name); ?></div>
                                 <div class="card-text team-member-position date-color"><?php echo esc_html($designation); ?></div>
                                 <div class="separator"></div>

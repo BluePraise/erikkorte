@@ -1,20 +1,21 @@
 <?php
-    get_template_part('template-parts/header/head');
+get_template_part('template-parts/header/head');
 ?>
-    <body <?php body_class(); ?>>
+
+<body <?php body_class(); ?>>
     <div class="site-wrapper">
 
-        <header class="site-header">
-        <?php get_template_part('template-parts/header/topbar');?>
-            <nav class="main-nav">
+        <header class="site-header sticky-top">
+            <?php get_template_part('template-parts/header/topbar'); ?>
+            <nav class="main-nav d-flex justify-content-between bg-white p-3 pt-3">
                 <?php
                 // logo
-                if ( has_custom_logo() ) {
+                if (has_custom_logo()) {
                     the_custom_logo();
                 } else {
-                    echo '<h1>'.get_bloginfo('name').'</h1>';
+                    echo '<h1>' . get_bloginfo('name') . '</h1>';
                 }
-				echo '<div class="mobile_menubtn"><i class="fa-solid fa-bars"></i></div>';
+                echo '<div class="mobile_menubtn"><i class="fa-solid fa-bars"></i></div>';
                 wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container' => 'ul',
