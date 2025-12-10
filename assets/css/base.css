@@ -31,11 +31,13 @@
     --theme-color5: #504545; /* Dark accent */
     --theme-color5-rgb: 80, 69, 69;
     --theme-gray-1: #8896A0;
+    --theme-gray-2: #f0f3f2
 
     /* Backgrounds */
     --theme-bg-dark: #212331;  /* Dark backgrounds */
     --theme-bg-darker: #181828; /* Darker sections */
-    --body-color: #3c3950; /* Main text color */
+    --theme-bg-light: var(--theme-gray-2); /* Light backgrounds */
+    --body-color: var(--theme-color4); /* Main text color */
 
     /* Text colors */
     --theme-text-light: #dde5eb; /* Light text on dark */
@@ -79,6 +81,7 @@ body {
     font-family: var(--main-font);
     color: var(--theme-color4); /* Main brand color #3c3950 */
     line-height: 1.6;
+    background-color: var(--theme-bg-light);
 }
 
 /* Headings */

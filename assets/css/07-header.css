@@ -41,11 +41,6 @@ header p {
 }
 
 /* Custom Main Nav (Non-Bootstrap) */
-.custom-logo-link {
-    max-width: 132px;
-    display: inline-block;
-    margin-right: 20px;
-}
 
 .site-header .main-menu {
     list-style: none;
