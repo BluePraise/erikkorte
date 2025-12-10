@@ -24,10 +24,7 @@ footer,
 .widget-title i {
     color: var(--theme-color-1);
     font-size: 14px;
-}
-
-.widget-title i::before {
-    transform: rotate(45deg);
+    transform: rotate(50deg) translateX(5px);
 }
 
 /* TODO: Replace with .text-muted in templates */
