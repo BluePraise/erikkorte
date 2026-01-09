@@ -10,8 +10,8 @@ get_header();
 				<?php echo the_breadcrumb(); ?>
             </div>
 </div>
-<div class="inner-page-outer">
+
 <?php the_content(); ?>
-</div>
+
 
 <?php get_footer(); ?>
