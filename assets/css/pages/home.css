@@ -135,29 +135,6 @@
     padding-bottom: 8rem;
 }
 
-/* These flex styles duplicate Bootstrap - consider removing */
-.services .row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.services .row > [class*="col-"] {
-    display: flex;
-    flex-direction: column;
-}
-
-.services .links_info {
-    display: flex;
-    flex: 1;
-}
-
-.services .quickfinder-item-box {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
-
 .wpb_wrapper h1 {
     color: var(--theme-color4);
     line-height: 69px;
@@ -193,6 +170,26 @@
     text-decoration: none;
 }
 
+/* Carousel / Testimonial */
+.carousel-inner {
+    max-width: 600px;
+    margin: auto;
+}
+.carousel-item {
+    border: 1px solid #dfe5e8;
+    border-radius: 4px;
+    padding: 4rem;
+}
+.carousel-item.active {
+    border-bottom: 6px solid #b3211f;
+}
+.testimonial-header {
+    margin-bottom: 0;
+}
+.testimonial-header h3 {
+    line-height: 1.7;
+    margin-left: 20px;
+}
 /* Responsive */
 @media screen and (max-width: 768px) {
     .wpb_wrapper h1 {

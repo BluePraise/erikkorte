@@ -189,64 +189,66 @@ $quality_mark = get_field('quality_mark');
     </div>
 </section>
 <!-- Quality Mark And testimonials -->
-<section class="feedbacks bg-white">
-    <div class="container-fluid">
+<section class="testimonials">
 
-        <div class="review_slider">
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <?php
-                    // Query arguments for Testimonials CPT
-                    $args = array(
-                        'post_type'      => 'testimonial',
-                        'posts_per_page' => -1,
-                        'order'          => 'DESC',
-                        'orderby'        => 'date'
-                    );
 
-                    // Custom Query
-                    $testimonial_query = new WP_Query($args);
 
-                    // Initialize counter
-                    $i = 0;
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
+        <div class="carousel-inner">
+            <?php
+            // Query arguments for Testimonials CPT
+            $args = array(
+                'post_type'      => 'testimonial',
+                'posts_per_page' => -1,
+                'order'          => 'DESC',
+                'orderby'        => 'date'
+            );
 
-                    // Check if there are posts
-                    if ($testimonial_query->have_posts()):
-                        // Loop through posts
-                        while ($testimonial_query->have_posts()): $testimonial_query->the_post();
-                            // Determine active class for the first item
-                            $class = ($i === 0) ? 'active' : '';
-                    ?>
-                            <div class="carousel-item <?php echo esc_attr($class); ?>">
-                                <h3><?php the_title(); ?></h3>
-                                <div class="testimonial-content">
-                                    <?php the_content(); ?>
-                                </div>
-                                <i class="fa fa-quote-right" aria-hidden="true"></i>
-                            </div>
-                    <?php
-                            $i++;
-                        endwhile;
-                    else:
-                        echo '<p>No testimonials found.</p>';
-                    endif;
+            // Custom Query
+            $testimonial_query = new WP_Query($args);
 
-                    // Reset post data
-                    wp_reset_postdata();
-                    ?>
-                </div>
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+            // Initialize counter
+            $i = 0;
+
+            // Check if there are posts
+            if ($testimonial_query->have_posts()):
+                // Loop through posts
+                while ($testimonial_query->have_posts()): $testimonial_query->the_post();
+                    // Determine active class for the first item
+                    $class = ($i === 0) ? 'active' : '';
+            ?>
+                    <div class="carousel-item <?php echo esc_attr($class); ?>">
+                        <div class="testimonial-header d-flex">
+                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            <h3><?php the_title(); ?></h3>
+                        </div>
+                        <div class="testimonial-content">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+            <?php
+                    $i++;
+                endwhile;
+            else:
+                echo '<p>No testimonials found.</p>';
+            endif;
+
+            // Reset post data
+            wp_reset_postdata();
+            ?>
         </div>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+
+
 </section>
 
 <?php get_footer(); ?>
