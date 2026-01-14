@@ -291,13 +291,13 @@
     background-color: #d83937;
 }
 
-/* Gem Textbox */
-.gem_textbox {
+/* Features Textbox */
+.features_textbox {
     margin-top: 10px;
     padding: 0 25px;
 }
 
-.gem_textbox p {
+.features_textbox p {
     text-align: left;
     font-family: var(--main-font);
     margin: 10px 0 20px;

@@ -123,7 +123,15 @@ img {
     background-color: #fff;
     padding: 0;
 }
+@media (min-width: 768px) {
+    .content-wrapper {
+        padding: 4rem;
+    }
+}
 
+.content-wrapper .row + .row {
+    margin-top: 8rem;
+}
 /* =============================================================================
    WordPress Block Editor Support
    ========================================================================== */

@@ -10,15 +10,23 @@
  * All page-specific CSS depends on Bootstrap for consistency
  */
 function erikkorte_enqueue_assets() {
-    // 1. LINE AWESOME ICONS (Icons8 CDN - loaded first in header)
+    // 1. FONT AWESOME ICONS (v6.1.2)
     wp_enqueue_style(
-        'line-awesome',
-        'https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css',
+        'font-awesome',
+        'https://use.fontawesome.com/releases/v6.1.2/css/all.css',
         array(),
-        '1.3.0'
+        '6.1.2'
     );
 
-    // 2. BOOTSTRAP CSS (Single source of truth - v5.3.8)
+    // 2. GOOGLE FONTS (Montserrat & Source Sans 3)
+    wp_enqueue_style(
+        'google-fonts',
+        'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap',
+        array(),
+        null
+    );
+
+    // 3. BOOTSTRAP CSS (Single source of truth - v5.3.8)
     wp_enqueue_style(
         'bootstrap-css',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css',
@@ -177,18 +185,6 @@ function erikkorte_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'erikkorte_enqueue_assets');
 
-// Font Awesome (enqueued separately for icon support)
-add_action('wp_enqueue_scripts', 'add_custom_fa_css');
-function add_custom_fa_css() {
-    wp_enqueue_style('custom-fa', 'https://use.fontawesome.com/releases/v6.1.2/css/all.css', array(), '6.1.2');
-}
-
-// Google Fonts (Source Sans 3 and Montserrat)
-function add_google_fonts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap', array(), null);
-}
-add_action('wp_enqueue_scripts', 'add_google_fonts', 5);
-
 // WordPress theme supports
 add_theme_support('align-wide');
 add_theme_support('editor-styles');
@@ -203,8 +199,12 @@ register_nav_menu('regions-menu', 'Regions Menu');
 
 function theme_support() {
     // Add theme support for various features
-    add_theme_support('menus', 'post-thumbnails', 'widgets', 'custom-header');
-	add_theme_support('post-thumbnails');
+    add_theme_support('menus');
+    add_theme_support('post-thumbnails');
+    add_theme_support('widgets');
+    add_theme_support('custom-header');
+    add_theme_support('page-attributes'); // Ensure page attributes panel shows in block editor
+
     $defaults = array(
 		'height'               => 100,
 		'width'                => 400,
@@ -217,141 +217,12 @@ function theme_support() {
 }
 add_action('after_setup_theme', 'theme_support');
 
-// acf json save
-//add_filter('acf/settings/save_json', 'acf_json_save_point');
-// function acf_json_save_point( $path ) {
-    //update path
-    // $path = get_stylesheet_directory() . '/acf-json';
-    //return
-    // return $path;
-// }
-
-
-add_action('acf/init', 'register_custom_acf_block');
-function register_custom_acf_block() {
-    if( function_exists('acf_register_block_type') ) {
-        acf_register_block_type(array(
-            'name'              => 'hero-banner',
-            'title'             => __('Hero Banner'),
-            'description'       => __('A Hero banner created using ACF and Gutenberg.'),
-            'render_template'   => get_template_directory() . '/blocks/hero-banner.php', // Path to the render template.
-            'category'          => 'formatting', // Choose from core block categories or create your own.
-            'icon'              => 'admin-customizer', // Dashicon for the block.
-            'keywords'          => array( 'custom', 'acf', 'block' ),
-        ));
-
-        acf_register_block_type(array(
-            'name'              => 'funeral-services',
-            'title'             => __('Funeral Services'),
-            'description'       => __('A block for displaying funeral services with ACF fields.'),
-            'render_template'   => get_template_directory() . '/blocks/funeral-services.php',
-            'category'          => 'formatting',
-            'icon'              => 'admin-post',
-            'keywords'          => array('funeral', 'services', 'acf', 'block'),
-        ));
-
-        acf_register_block_type(array(
-            'name'              => 'team-section',
-            'title'             => __('Team Section'),
-            'description'       => __('A block to display team members with ACF fields.'),
-            'render_template'   => get_template_directory() . '/blocks/team-section.php',
-            'category'          => 'formatting',
-            'icon'              => 'groups',
-            'keywords'          => array('team', 'members', 'acf', 'block'),
-        ));
-
-        acf_register_block_type(array(
-            'name'              => 'quality-mark',
-            'title'             => __('Quality Mark'),
-            'description'       => __('A block to showcase quality marks or certifications.'),
-            'render_template'   => get_template_directory() . '/blocks/quality-mark.php',
-            'category'          => 'formatting',
-            'icon'              => 'awards',
-            'keywords'          => array('quality', 'mark', 'certification', 'acf'),
-        ));
-
-        acf_register_block_type(array(
-            'name'              => 'contact-details',
-            'title'             => __('Contact Details'),
-            'description'       => __('A block to showcase quality marks or certifications.'),
-            'render_template'   => get_template_directory() . '/blocks/contact-details.php',
-            'category'          => 'formatting',
-            'icon'              => 'awards',
-            'keywords'          => array('contact', 'info', 'address', 'acf'),
-        ));
-
-        acf_register_block_type(array(
-            'name'              => 'inner-page-banner',
-            'title'             => __('Inner Page Banner'),
-            'description'       => __('A block to show the inne page banner in Erik Korte.'),
-            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php',
-            'category'          => 'formatting',
-            'icon'              => 'groups',
-            'keywords'          => array('team', 'members', 'Erik Korte', 'acf'),
-        ));
-
-
-        acf_register_block_type(array(
-            'name'              => 'team-erik-korte',
-            'title'             => __('Team Erik Korte'),
-            'description'       => __('A block to showcase the team members of Erik Korte.'),
-            'render_template'   => get_template_directory() . '/blocks/team-erik-korte.php',
-            'category'          => 'formatting',
-            'icon'              => 'groups',
-            'keywords'          => array('team', 'members', 'Erik Korte', 'acf'),
-        ));
-
-
-        acf_register_block_type(array(
-            'name'              => 'contact-us-page',
-            'title'             => __('Contact us page'),
-            'description'       => __('A block to allow users to add contact details in contact us page.'),
-            'render_template'   => get_template_directory() . '/blocks/contact-us-page.php',
-            'category'          => 'formatting',
-            'icon'              => 'groups',
-            'keywords'          => array('contact us', 'conatct', 'Erik Korte', 'acf'),
-        ));
-
-
-        acf_register_block_type(array(
-            'name'              => 'image-gallery',  // Use the new block name 'service-cost'
-            'title'             => __('Image Gallery'),  // Update the title to reflect the new block name
-            'description'       => __('A block to display image gallery.'), // Modify description
-            'render_template'   => get_template_directory() . '/blocks/image-gallery.php',  // Change the template to 'service-cost.php'
-            'category'          => 'formatting', // The block category, adjust as needed
-            'icon'              => 'money',
-            'keywords'          => array('image', 'gallery', 'acf'),
-        ));
-
-
-        acf_register_block_type(array(
-            'name'              => 'funeral-home-twente',  // New block name 'funeral-home-twente'
-            'title'             => __('Funeral Home Twente'),  // Update the title
-            'description'       => __('A block to display funeral home Twente information.'),  // Modify description to fit the content
-            'render_template'   => get_template_directory() . '/blocks/funeral-home-twente.php',  // Template file for rendering the block
-            'category'          => 'formatting', // You can change this to a different category if needed
-            'icon'              => 'businessperson',  // Adjust icon if needed, you can choose another from the available WordPress icons
-            'keywords'          => array('funeral', 'home', 'twente', 'acf', 'service'),  // Keywords for better block discovery
-        ));
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-    /*=============================================
-                    BREADCRUMBS
-    =============================================*/
-    //  to include in functions.php
-    function the_breadcrumb()
-    {
+/**
+ * Breadcrumbs Function
+ * Displays hierarchical breadcrumb navigation
+ */
+function the_breadcrumb()
+{
         $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
         $delimiter = '&raquo;'; // delimiter between crumbs
         $home = 'Home'; // text for the 'Home' link
@@ -460,14 +331,9 @@ function register_custom_acf_block() {
         }
     } // end the_breadcrumb()
 
-
-
-}
-
-
-
-
-/* Theme Settings */
+/**
+ * ACF Theme Settings Page
+ */
 add_action('acf/init', 'my_acf_init');
 
 function my_acf_init() {
@@ -598,4 +464,19 @@ add_filter('manage_edit-page_sortable_columns', 'make_featured_image_column_sort
  * The old meta box code has been REMOVED to avoid conflicts.
  * Post type is 'condoleance' (not 'cpt_condolances')
  */
+
+/**
+ * ACF JSON Save & Load Points
+ * Enables version control for ACF field groups
+ */
+add_filter('acf/settings/save_json', function($path) {
+    return get_stylesheet_directory() . '/acf-json';
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+    unset($paths[0]);
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+});
+
 

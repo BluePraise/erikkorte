@@ -1,0 +1,629 @@
+{
+    "key": "group_homepage_content",
+    "title": "Homepage Inhoud",
+    "fields": [
+        {
+            "key": "field_homepage_content",
+            "label": "Homepage Inhoud",
+            "name": "homepage_content",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "Voeg inhoudsblokken toe en rangschik ze voor de homepage. Sleep om secties te herschikken.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_home_hero": {
+                    "key": "layout_home_hero",
+                    "name": "home_hero",
+                    "label": "Home Hero Sectie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_hero_image",
+                            "label": "Hero Afbeelding",
+                            "name": "hero_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Hoofd hero afbeelding (linkerkant)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_intro_text",
+                            "label": "Intro Tekst",
+                            "name": "intro_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Welkomsttekst (bijv. \"Welkom bij\")",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_site_title",
+                            "label": "Site Titel",
+                            "name": "site_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Hoofdkop",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_site_sub_title",
+                            "label": "Site Ondertitel",
+                            "name": "site_sub_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Ondertitel onder de hoofdkop",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_site_description",
+                            "label": "Site Beschrijving",
+                            "name": "site_description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Intro paragraaf",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 4,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_feature_heading",
+                            "label": "Kenmerken Sectie Kop",
+                            "name": "feature_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Kop boven genummerde kenmerken",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_feature_list",
+                            "label": "Kenmerk Items",
+                            "name": "feature_list",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Voeg genummerde kenmerken toe (worden weergegeven als 1, 2, 3...)",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Kenmerk Toevoegen",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_feature_text",
+                                    "label": "Kenmerk Tekst",
+                                    "name": "feature_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_gem_text_section"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_services": {
+                    "key": "layout_services",
+                    "name": "services",
+                    "label": "Diensten Sectie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_services_heading",
+                            "label": "Diensten Hoofdkop",
+                            "name": "services_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optionele hoofdkop",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_services_sub_heading",
+                            "label": "Diensten Onderkop",
+                            "name": "services_sub_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Sectie titel",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_services_description",
+                            "label": "Diensten Beschrijving",
+                            "name": "services_description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Sectie intro tekst",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_services",
+                            "label": "Diensten",
+                            "name": "services",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Voeg diensten toe (3 per rij)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Dienst Toevoegen",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_service_icon",
+                                    "label": "Icoon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Dienst icoon afbeelding",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "url",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "thumbnail",
+                                    "parent_repeater": "field_services"
+                                },
+                                {
+                                    "key": "field_service_heading",
+                                    "label": "Kop",
+                                    "name": "heading",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Dienst titel",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_services"
+                                },
+                                {
+                                    "key": "field_service_description",
+                                    "label": "Beschrijving",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Dienst beschrijving",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_services"
+                                },
+                                {
+                                    "key": "field_services_url",
+                                    "label": "URL",
+                                    "name": "services_url",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "Link naar dienst pagina",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "parent_repeater": "field_services"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_home_team": {
+                    "key": "layout_home_team",
+                    "name": "home_team",
+                    "label": "Team Sectie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_team_heading",
+                            "label": "Team Kop",
+                            "name": "team_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Sectie titel",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_team_description",
+                            "label": "Team Beschrijving",
+                            "name": "team_description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Sectie intro tekst",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_quality_mark",
+                            "label": "Kwaliteitskeurmerk Afbeelding",
+                            "name": "quality_mark",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Kwaliteitscertificering badge (wordt weergegeven na teamleden)",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_team_members",
+                            "label": "Teamleden",
+                            "name": "team_members",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Voeg teamlid profielen toe (4 per rij)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_member_name",
+                            "button_label": "Teamlid Toevoegen",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_member_profile_image",
+                                    "label": "Profielfoto",
+                                    "name": "member_profile_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Teamlid foto",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "url",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium",
+                                    "parent_repeater": "field_team_members"
+                                },
+                                {
+                                    "key": "field_member_name",
+                                    "label": "Naam",
+                                    "name": "member_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Volledige naam",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_team_members"
+                                },
+                                {
+                                    "key": "field_member_designation",
+                                    "label": "Functie",
+                                    "name": "member_designation",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Functietitel",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_team_members"
+                                },
+                                {
+                                    "key": "field_member_email",
+                                    "label": "E-mail",
+                                    "name": "member_email",
+                                    "aria-label": "",
+                                    "type": "email",
+                                    "instructions": "Contact e-mailadres",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_team_members"
+                                },
+                                {
+                                    "key": "field_member_phone",
+                                    "label": "Telefoon",
+                                    "name": "member_phone",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Contact telefoonnummer",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_team_members"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_testimonials": {
+                    "key": "layout_testimonials",
+                    "name": "testimonials",
+                    "label": "Getuigenissen Carrousel",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Sectie Toevoegen"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "discussion",
+        "comments",
+        "categories",
+        "tags"
+    ],
+    "active": true,
+    "description": "Flexibele inhoudsblokken voor de homepage. Voeg secties toe, verwijder en herschik ze indien nodig.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1768418980
+}

@@ -27,7 +27,7 @@ if (post_password_required()) {
 			}
 			?>
         </h3>
-		<a href="#respond" class="jumpto-commentform btn gem-button btn-success choose-reminder">Voeg een bericht toe</a>
+		<a href="#respond" class="jumpto-commentform btn btn-success choose-reminder">Voeg een bericht toe</a>
 		</div>
         <ol class="commentlist">
             <?php

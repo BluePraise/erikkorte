@@ -1,15 +1,9 @@
 <?php
 /* Template Name: Blog Posts */
-get_header(); ?>
+get_header();
 
-<div class="hero-banner" style="background-image: url(<?php the_post_thumbnail_url('full'); ?>);">
-    <div class="container">
-        <h1 class="banner-heading"><?php the_title(); ?></h1>
-    </div>
-    <div class="breadcrumbs-container">
-        <?php echo the_breadcrumb(); ?>
-    </div>
-</div>
+get_template_part('template-parts/hero-banner');
+?>
 
 <div class="blog-posts">
     <div class="container-fluid my-lg-5 my-3">

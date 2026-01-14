@@ -1,0 +1,194 @@
+{
+    "key": "group_flexible_content",
+    "title": "Flexible Content",
+    "fields": [
+        {
+            "key": "field_flexible_content",
+            "label": "Content Blocks",
+            "name": "flexible_content",
+            "type": "flexible_content",
+            "instructions": "Add and arrange content blocks for this page",
+            "required": 0,
+            "button_label": "Add Content Block",
+            "layouts": {
+                "layout_text_block": {
+                    "key": "layout_text_block",
+                    "name": "text_block",
+                    "label": "Text Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_text_content",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "wysiwyg",
+                            "required": 1,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1
+                        },
+                        {
+                            "key": "field_text_width",
+                            "label": "Width",
+                            "name": "width",
+                            "type": "select",
+                            "choices": {
+                                "full": "Full Width",
+                                "wide": "Wide",
+                                "narrow": "Narrow"
+                            },
+                            "default_value": "full"
+                        }
+                    ]
+                },
+                "layout_gallery_block": {
+                    "key": "layout_gallery_block",
+                    "name": "gallery_block",
+                    "label": "Gallery Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_gallery_images",
+                            "label": "Gallery Images",
+                            "name": "gallery",
+                            "type": "gallery",
+                            "required": 1,
+                            "return_format": "url",
+                            "library": "all"
+                        },
+                        {
+                            "key": "field_gallery_columns",
+                            "label": "Columns",
+                            "name": "columns",
+                            "type": "select",
+                            "choices": {
+                                "two": "2 Columns",
+                                "three": "3 Columns"
+                            },
+                            "default_value": "three"
+                        },
+                        {
+                            "key": "field_gallery_section_class",
+                            "label": "Section Class (Optional)",
+                            "name": "section_class",
+                            "type": "text",
+                            "instructions": "Add custom CSS class to this section"
+                        }
+                    ]
+                },
+                "layout_video_block": {
+                    "key": "layout_video_block",
+                    "name": "video_block",
+                    "label": "Video Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_video_embed",
+                            "label": "Video Embed Code",
+                            "name": "video_embed",
+                            "type": "textarea",
+                            "required": 1,
+                            "instructions": "Paste YouTube or Vimeo embed code"
+                        }
+                    ]
+                },
+                "layout_team_block": {
+                    "key": "layout_team_block",
+                    "name": "team_block",
+                    "label": "Team Members Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_team_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_team_members",
+                            "label": "Team Members",
+                            "name": "team_members",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Add Team Member",
+                            "sub_fields": [
+                                {
+                                    "key": "field_team_image",
+                                    "label": "Image",
+                                    "name": "team-image",
+                                    "type": "image",
+                                    "return_format": "url"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_two_column_block": {
+                    "key": "layout_two_column_block",
+                    "name": "two_column_block",
+                    "label": "Two Column Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_left_image",
+                            "label": "Left Image",
+                            "name": "left_image",
+                            "type": "image",
+                            "return_format": "url"
+                        },
+                        {
+                            "key": "field_right_content",
+                            "label": "Right Content",
+                            "name": "right_content",
+                            "type": "wysiwyg",
+                            "required": 1
+                        },
+                        {
+                            "key": "field_partners_logo",
+                            "label": "Partners Logo (Optional)",
+                            "name": "partners_logo",
+                            "type": "image",
+                            "return_format": "url"
+                        }
+                    ]
+                },
+                "layout_cta_block": {
+                    "key": "layout_cta_block",
+                    "name": "cta_block",
+                    "label": "Call to Action Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_cta_content",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "wysiwyg"
+                        },
+                        {
+                            "key": "field_cta_link",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "return_format": "array"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-flexible.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}
