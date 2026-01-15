@@ -3,7 +3,7 @@
     <div class="container-fluid p-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
-                <h3 class="footer-title widget-title"><?php the_field('over_ons', 'option'); ?><i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title"><?php echo esc_html_e('Over Ons', 'erikkorte'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <div class="textwidget">
                     <?php the_field('over_ons_text', 'option'); ?>
                     <p class="text-center">
@@ -30,7 +30,7 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <!-- add line awesome caret to each widget-title -->
-                <h3 class="footer-title widget-title"><?php the_field('address_title', 'option'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title"><?php echo esc_html_e('Adresgegevens', 'erikkorte'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <div class="textwidget">
                     <?php
                     $address_group = get_field('company_details_group', 'option');
