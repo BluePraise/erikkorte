@@ -11,9 +11,9 @@ footer,
 
 /* Footer Widgets
  * TODO: Replace with Bootstrap classes:
- * .widget-title → .h5 .text-uppercase .fw-bold .mb-4 .text-white
+ * .footer-title → .h5 .text-uppercase .fw-bold .mb-4 .text-white
  */
-.widget-title {
+.footer-title {
     margin-bottom: 40px;
     color: #feffff;
     line-height: 30px;
@@ -22,7 +22,7 @@ footer,
     text-transform: uppercase;
 }
 
-.widget-title i {
+.footer-title i {
     color: var(--theme-color-1);
     font-size: 14px;
     transform: rotate(50deg) translateX(5px);

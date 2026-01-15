@@ -3,7 +3,7 @@
     <div class="container-fluid p-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
-                <h3 class="widget-title"><?php the_field('over_ons', 'option'); ?><i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title"><?php the_field('over_ons', 'option'); ?><i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <div class="textwidget">
                     <?php the_field('over_ons_text', 'option'); ?>
                     <p class="text-center">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
-                <h3 class="widget-title">Snel naar: <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title">Snel naar: <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <nav class="footer-quick-menu" aria-label="Footer navigation">
                     <?php
                     // Display a menu with ID 'footer-quick'
@@ -30,19 +30,45 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6 set_btm">
                 <!-- add line awesome caret to each widget-title -->
-                <h3 class="widget-title"><?php the_field('address_title', 'option'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title"><?php the_field('address_title', 'option'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <div class="textwidget">
-                    <?php echo wp_kses_post(get_field('address_detail', 'option')); ?>
-                    <p>Telefoon: <a href="tel:<?php echo esc_attr(get_field('phone_number', 'option')); ?>" aria-label="Bel ons op <?php echo esc_attr(get_field('phone_number', 'option')); ?>"><?php echo esc_html(get_field('phone_number', 'option')); ?></a><br>
-                        E-mail: <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo esc_attr(get_field('email_address', 'option')); ?>" aria-label="Stuur een e-mail naar <?php echo esc_attr(get_field('email_address', 'option')); ?>"><?php echo esc_html(get_field('email_address', 'option')); ?></a><br>
-                        Website: <a href="<?php echo esc_url(get_field('website_link', 'option')); ?>" rel="nofollow noopener" target="_blank" aria-label="Bezoek onze website op <?php echo esc_attr(get_field('website_link', 'option')); ?>"><?php echo esc_html(get_field('website_link', 'option')); ?></a></p>
+                    <?php
+                    $address_group = get_field('company_details_group', 'option');
+                    if ($address_group) {
+                        // Address details
+                        if (!empty($address_group['address_details'])) {
+                            echo '<p>' . nl2br(esc_html($address_group['address_details'])) . '</p>';
+                        }
+
+                        // Contact info
+                        echo '<p>';
+                        if (!empty($address_group['phone_number'])) {
+                            $phone = $address_group['phone_number'];
+                            echo 'Telefoon: <a href="tel:' . esc_attr($phone) . '" aria-label="Bel ons op ' . esc_attr($phone) . '">' . esc_html($phone) . '</a><br>';
+                        }
+                        if (!empty($address_group['email_address'])) {
+                            $email = $address_group['email_address'];
+                            echo 'E-mail: <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:' . esc_attr($email) . '" aria-label="Stuur een e-mail naar ' . esc_attr($email) . '">' . esc_html($email) . '</a><br>';
+                        }
+                        // Website using WordPress home URL
+                        echo 'Website: <a href="' . esc_url(home_url('/')) . '" aria-label="Bezoek onze website">' . esc_html(parse_url(home_url('/'), PHP_URL_HOST)) . '</a>';
+                        echo '</p>';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <h3 class="widget-title"><?php the_field('happy_funeral', 'option'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
-                <?php if (is_active_sidebar('footer_widget_two')) : ?>
-                    <?php dynamic_sidebar('footer_widget_two'); ?>
-                <?php endif; ?>
+                <h3 class="footer-title widget-title"><?php esc_html_e('Lokaties', 'erikkorte'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <nav class="footer-locations-menu footer-quick-menu" aria-label="Footer locations navigation">
+                    <?php
+                    wp_nav_menu(array(
+                        'menu'           => 'regions-menu',
+                        'container'      => false,
+                        'menu_class'     => 'f_list',
+                        'fallback_cb'    => false
+                    ));
+                    ?>
+                </nav>
             </div>
         </div>
     </div>
@@ -50,13 +76,18 @@
         <div class="container-fluid px-5">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-3 order_1 footer-site-info">
-                    <?php the_field('copyright', 'option'); ?>
+                    &copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?>
                 </div>
                 <div class="footer-socials col-lg-3 col-md-3 order_3 ms-auto text-end">
                     <div class="socials inline-inside socials-colored">
-                        <a href="<?php the_field('facebook_url', 'option'); ?>" target="_blank" rel="noopener" aria-label="Volg ons op Facebook" class="socials-item">
-                            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> <span class="visually-hidden">Facebook</span> Follow Us
-                        </a>
+                        <?php
+                        $address_group = get_field('company_details_group', 'option');
+                        if ($address_group && !empty($address_group['facebook_url'])) :
+                        ?>
+                            <a href="<?php echo esc_url($address_group['facebook_url']); ?>" target="_blank" rel="noopener" aria-label="Volg ons op Facebook" class="socials-item">
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> <span class="visually-hidden">Facebook</span> Follow Us
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

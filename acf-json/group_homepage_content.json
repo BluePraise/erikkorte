@@ -189,7 +189,7 @@
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_gem_text_section"
+                                    "parent_repeater": "field_feature_list"
                                 }
                             ]
                         }
@@ -337,7 +337,7 @@
                                     "label": "Beschrijving",
                                     "name": "description",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "textarea",
                                     "instructions": "Dienst beschrijving",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -348,27 +348,10 @@
                                     },
                                     "default_value": "",
                                     "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "rows": "",
                                     "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_services"
-                                },
-                                {
-                                    "key": "field_services_url",
-                                    "label": "URL",
-                                    "name": "services_url",
-                                    "aria-label": "",
-                                    "type": "url",
-                                    "instructions": "Link naar dienst pagina",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
+                                    "new_lines": "",
                                     "parent_repeater": "field_services"
                                 }
                             ]
@@ -603,9 +586,9 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "page_type",
                 "operator": "==",
-                "value": "default"
+                "value": "front_page"
             }
         ]
     ],
@@ -625,5 +608,5 @@
     "description": "Flexibele inhoudsblokken voor de homepage. Voeg secties toe, verwijder en herschik ze indien nodig.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768418980
+    "modified": 1768424327
 }

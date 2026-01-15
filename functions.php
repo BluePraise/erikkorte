@@ -191,9 +191,7 @@ add_theme_support('editor-styles');
 
 // Register navigation menus
 register_nav_menu('main-menu', 'Main Menu');
-register_nav_menu('footer-menu', 'Footer Menu');
-register_nav_menu('footer-quick', 'Quick Menu');
-register_nav_menu('bottom-menu', 'Copyright Menu');
+register_nav_menu('footer-quick', 'Footer Quick Menu');
 register_nav_menu('regions-menu', 'Regions Menu');
 
 
