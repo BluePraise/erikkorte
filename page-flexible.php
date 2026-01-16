@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Flexible Page
  *
@@ -8,8 +9,11 @@
 get_header();
 
 get_template_part('template-parts/hero-banner');
+?>
 
-// Check if flexible content field exists
+<div class="content-wrapper">
+
+<?php
 if (have_rows('flexible_content')) :
     while (have_rows('flexible_content')) : the_row();
 
@@ -41,14 +45,14 @@ if (have_rows('flexible_content')) :
                 break;
         }
 
-    endwhile;
-else :
+    endwhile; ?>
+</div>
+<?php else :
     // Fallback to default content if no flexible content
-    ?>
+?>
     <div class="content-wrapper">
         <?php the_content(); ?>
     </div>
-    <?php
+<?php
 endif;
-
 get_footer();

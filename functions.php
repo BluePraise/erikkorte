@@ -161,20 +161,9 @@ function erikkorte_enqueue_assets() {
         );
     }
 
-    // Condoleances listing/single (Plugin post type: 'condoleance')
-    $condoleances_css = get_template_directory() . '/assets/css/pages/condoleances.css';
-    if ((is_post_type_archive('condoleance') || is_singular('condoleance')) && file_exists($condoleances_css)) {
-        wp_enqueue_style(
-            'erikkorte-page-condoleances',
-            get_template_directory_uri() . '/assets/css/pages/condoleances.css',
-            array('erikkorte-base'),
-            filemtime($condoleances_css)
-        );
-    }
-
     // Testimonials page and CPT
     $testimonials_css = get_template_directory() . '/assets/css/pages/testimonials.css';
-    if ((is_page_template('template-parts/page-testimonials.php') || is_singular('testim_and_reviews') || is_post_type_archive('testim_and_reviews')) && file_exists($testimonials_css)) {
+    if ((is_page_template('page-testimonials.php') || is_singular('testim_and_reviews') || is_post_type_archive('testim_and_reviews')) && file_exists($testimonials_css)) {
         wp_enqueue_style(
             'erikkorte-page-testimonials',
             get_template_directory_uri() . '/assets/css/pages/testimonials.css',
@@ -234,6 +223,47 @@ function erikkorte_register_team_cpt() {
     register_post_type('team_member', $args);
 }
 add_action('init', 'erikkorte_register_team_cpt');
+
+/**
+ * Register Custom Post Type: Reacties van Nabestaanden (Testimonials & Reviews)
+ * Used for displaying testimonials from relatives
+ */
+function erikkorte_register_testimonial_cpt() {
+    $labels = array(
+        'name'                  => 'Reacties van Nabestaanden',
+        'singular_name'         => 'Reactie',
+        'menu_name'             => 'Reacties',
+        'add_new'               => 'Nieuwe Reactie',
+        'add_new_item'          => 'Nieuwe Reactie Toevoegen',
+        'edit_item'             => 'Reactie Bewerken',
+        'new_item'              => 'Nieuwe Reactie',
+        'view_item'             => 'Reactie Bekijken',
+        'search_items'          => 'Reacties Zoeken',
+        'not_found'             => 'Geen reacties gevonden',
+        'not_found_in_trash'    => 'Geen reacties in prullenbak',
+        'all_items'             => 'Alle Reacties',
+    );
+
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_icon'             => 'dashicons-testimonial',
+        'menu_position'         => 26,
+        'query_var'             => true,
+        'rewrite'               => array('slug' => 'reacties'),
+        'capability_type'       => 'post',
+        'has_archive'           => true,
+        'hierarchical'          => false,
+        'supports'              => array('title', 'editor', 'thumbnail'),
+        'show_in_rest'          => true,
+    );
+
+    register_post_type('testim_and_reviews', $args);
+}
+add_action('init', 'erikkorte_register_testimonial_cpt');
 
 
 function theme_support() {

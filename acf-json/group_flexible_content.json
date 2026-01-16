@@ -20,7 +20,7 @@
                 "layout_text_block": {
                     "key": "layout_text_block",
                     "name": "text_block",
-                    "label": "Text Block",
+                    "label": "Tekst Blok",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -79,18 +79,18 @@
                 "layout_gallery_block": {
                     "key": "layout_gallery_block",
                     "name": "gallery_block",
-                    "label": "Gallery Block",
+                    "label": "Afbeeldingen Galerij",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_gallery_images",
-                            "label": "Gallery Images",
+                            "label": "Afbeeldingen",
                             "name": "gallery",
                             "aria-label": "",
                             "type": "gallery",
                             "instructions": "",
                             "required": 1,
-                            "conditional_logic": false,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -98,27 +98,27 @@
                             },
                             "return_format": "url",
                             "library": "all",
-                            "preview_size": "medium",
+                            "min": "",
+                            "max": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
                             "insert": "append",
-                            "min": 0,
-                            "max": 0,
-                            "min_width": 0,
-                            "min_height": 0,
-                            "min_size": 0,
-                            "max_width": 0,
-                            "max_height": 0,
-                            "max_size": 0,
-                            "mime_types": ""
+                            "preview_size": "medium"
                         },
                         {
                             "key": "field_gallery_columns",
-                            "label": "Columns",
+                            "label": "Kolommen",
                             "name": "columns",
                             "aria-label": "",
                             "type": "select",
                             "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -129,12 +129,13 @@
                                 "three": "3 Columns"
                             },
                             "default_value": "three",
+                            "return_format": "value",
                             "multiple": 0,
                             "allow_null": 0,
+                            "allow_in_bindings": 1,
                             "ui": 0,
                             "ajax": 0,
                             "placeholder": "",
-                            "return_format": "value",
                             "create_options": 0,
                             "save_options": 0
                         },
@@ -195,16 +196,16 @@
                 "layout_team_block": {
                     "key": "layout_team_block",
                     "name": "team_block",
-                    "label": "Team Members Block",
+                    "label": "Team Leden",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_team_title",
-                            "label": "Title",
+                            "label": "Titel",
                             "name": "title",
                             "aria-label": "",
                             "type": "text",
-                            "instructions": "",
+                            "instructions": "Optionele sectie titel (laat leeg om geen titel te tonen)",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -214,58 +215,9 @@
                             },
                             "default_value": "",
                             "maxlength": "",
-                            "placeholder": "",
+                            "placeholder": "Ons Team",
                             "prepend": "",
                             "append": ""
-                        },
-                        {
-                            "key": "field_team_members",
-                            "label": "Team Members",
-                            "name": "team_members",
-                            "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "table",
-                            "button_label": "Add Team Member",
-                            "min": 0,
-                            "max": 0,
-                            "rows_per_page": 20,
-                            "collapsed": "",
-                            "sub_fields": [
-                                {
-                                    "key": "field_team_image",
-                                    "label": "Image",
-                                    "name": "team-image",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "url",
-                                    "preview_size": "medium",
-                                    "library": "all",
-                                    "min_width": 0,
-                                    "min_height": 0,
-                                    "min_size": 0,
-                                    "max_width": 0,
-                                    "max_height": 0,
-                                    "max_size": 0,
-                                    "mime_types": "",
-                                    "parent_repeater": "field_team_members"
-                                }
-                            ]
                         }
                     ],
                     "min": "",
@@ -275,7 +227,7 @@
                     "key": "layout_two_column_block",
                     "name": "two_column_block",
                     "label": "Twee Kolommen",
-                    "display": "block",
+                    "display": "table",
                     "sub_fields": [
                         {
                             "key": "field_left_image",
@@ -357,44 +309,46 @@
                 "layout_cta_block": {
                     "key": "layout_cta_block",
                     "name": "cta_block",
-                    "label": "Call to Action Block",
+                    "label": "Call to Action Button",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_cta_content",
-                            "label": "Content",
-                            "name": "content",
+                            "label": "Button Tekst",
+                            "name": "cta_button_label",
                             "aria-label": "",
-                            "type": "wysiwyg",
+                            "type": "text",
                             "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
                             "default_value": "",
-                            "delay": 0
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_cta_link",
-                            "label": "Link",
-                            "name": "link",
+                            "label": "CTA Button Link",
+                            "name": "cta_button_link",
                             "aria-label": "",
                             "type": "link",
                             "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array"
+                            "return_format": "array",
+                            "allow_in_bindings": 1
                         }
                     ],
                     "min": "",
@@ -416,7 +370,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -425,5 +379,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768530690
+    "modified": 1768532487
 }
