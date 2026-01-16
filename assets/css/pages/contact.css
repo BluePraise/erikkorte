@@ -3,10 +3,159 @@
    Erik Korte Theme - Contact
    ========================================================================== */
 
-/* Contact page styling will be extracted from main CSS */
-/* Placeholder for now */
+/* Contact Info Row */
+.contact-info-row {
+    margin-bottom: 3rem;
+}
 
+.contact-info-row .col-sm-12 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-info-row .icon {
+    margin-bottom: 1rem;
+}
+
+.contact-info-row .icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.contact-info-row h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 1rem;
+}
+
+.contact-info-row p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.contact-info-row a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.contact-info-row a:hover {
+    color: #a82b2b;
+}
+
+/* Map and Form Section */
 .contact-form {
-    max-width: 800px;
-    margin: 0 auto;
+    padding-left: 2rem;
+}
+.contact-form p label {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Contact Form Fields */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    color: #333;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form input[type="tel"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #a82b2b;
+    background: #fff;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+}
+
+.contact-form textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+/* Form Row Layout - Side by Side Fields */
+.contact-form .wpcf7-form-control-wrap {
+    display: block;
+}
+
+.contact-form .wpcf7-form p {
+    margin-bottom: 0;
+}
+
+/* Submit Button */
+.contact-form input[type="submit"],
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #a82b2b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contact-form input[type="submit"]:hover,
+.contact-form button[type="submit"]:hover {
+    background: #8a2323;
+}
+
+/* Map Container */
+.contact-map-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.contact-map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .contact-form {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+
+    .contact-info-row .col-sm-12 {
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-info-row h2 {
+        font-size: 0.75rem;
+    }
+
+    .contact-map-container iframe {
+        height: 300px;
+    }
 }
