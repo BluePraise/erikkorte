@@ -30,9 +30,9 @@
     color: var(--theme-color-1);
 }
 
-/* Icon sizing - Line Awesome icons */
-.top-area-block i {
-    font-size: 20px;
+.top-area-block li,
+.top-area-block li a{
+    color: #8896a0;
 }
 
 /* Header */

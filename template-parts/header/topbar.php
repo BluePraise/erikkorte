@@ -8,26 +8,23 @@
 ?>
 <div class="top-area-block">
     <div class="container">
-        <ul class="list-unstyled d-flex align-items-center justify-content-center gap-3 mb-0">
+        <ul class="list-unstyled d-flex align-items-center justify-content-center gap-5 mb-0">
             <?php
             $address_group = get_field('company_details_group', 'option');
             if ($address_group):
                 // Address
                 if (!empty($address_group['address_details'])):
-                    // Display first line only for topbar
-                    $address_lines = explode("\n", $address_group['address_details']);
-                    $first_line = trim($address_lines[0]);
-                    if ($first_line):
+                    // only display the last two lines of the address
+                    $address_lines = explode("\n", trim($address_group['address_details']));
             ?>
                 <li class="d-inline-flex align-items-center">
                     <i class="fa-solid fa-location-dot me-2" aria-hidden="true"></i>
-                    <address class="mb-0 d-inline-block small" style="font-style: normal;">
-                        <?php echo esc_html($first_line); ?>
+                    <address class="mb-0 d-inline-block small">
+                        <?php echo esc_html($address_group['address_details']); ?>
                     </address>
                 </li>
             <?php
-                    endif;
-                endif;
+                    endif; // end if address details
 
                 // Phone
                 if (!empty($address_group['phone_number'])):

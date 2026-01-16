@@ -35,9 +35,9 @@
                     <?php
                     $address_group = get_field('company_details_group', 'option');
                     if ($address_group) {
-                        // Address details
+                        // Site title and address details
                         if (!empty($address_group['address_details'])) {
-                            echo '<p>' . nl2br(esc_html($address_group['address_details'])) . '</p>';
+                            echo '<p>' . esc_html(get_bloginfo('name')) . '<br>' . nl2br(esc_html($address_group['address_details'])) . '</p>';
                         }
 
                         // Contact info
