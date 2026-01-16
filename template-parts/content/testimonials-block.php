@@ -2,11 +2,19 @@
 /**
  * Testimonials Block
  *
- * Displays a Bootstrap carousel of testimonials from the Testimonial CPT
+ * Displays a Bootstrap carousel of testimonials from ACF repeater
  * Auto-rotates every 5 seconds with manual controls
  *
- * No ACF fields required - pulls from 'testimonial' custom post type
+ * Expected ACF fields (from homepage_content flexible content):
+ * - testimonials_list (repeater)
+ *   - testimonial_title (text)
+ *   - testimonial_content (wysiwyg)
  */
+
+// Get testimonials from ACF repeater
+$testimonials = get_sub_field('testimonials_list');
+
+if ($testimonials && count($testimonials) > 0):
 ?>
 
 <!-- Testimonials Section -->
@@ -14,38 +22,20 @@
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
         <div class="carousel-inner">
             <?php
-            // Query testimonials CPT
-            $args = array(
-                'post_type'      => 'testimonial',
-                'posts_per_page' => -1,
-                'order'          => 'DESC',
-                'orderby'        => 'date'
-            );
-
-            $testimonial_query = new WP_Query($args);
-            $i = 0;
-
-            if ($testimonial_query->have_posts()):
-                while ($testimonial_query->have_posts()): $testimonial_query->the_post();
-                    $class = ($i === 0) ? 'active' : '';
+            foreach ($testimonials as $i => $testimonial):
+                $class = ($i === 0) ? 'active' : '';
             ?>
-                    <div class="carousel-item <?php echo esc_attr($class); ?>">
-                        <div class="testimonial-header d-flex">
-                            <i class="fa fa-quote-right" aria-hidden="true"></i>
-                            <h3><?php the_title(); ?></h3>
-                        </div>
-                        <div class="testimonial-content">
-                            <?php the_content(); ?>
-                        </div>
+                <div class="carousel-item <?php echo esc_attr($class); ?>">
+                    <div class="testimonial-header d-flex">
+                        <i class="fa fa-quote-right" aria-hidden="true"></i>
+                        <h3><?php echo esc_html($testimonial['testimonial_title']); ?></h3>
                     </div>
+                    <div class="testimonial-content">
+                        <?php echo wp_kses_post($testimonial['testimonial_content']); ?>
+                    </div>
+                </div>
             <?php
-                    $i++;
-                endwhile;
-            else:
-                echo '<p>No testimonials found.</p>';
-            endif;
-
-            wp_reset_postdata();
+            endforeach;
             ?>
         </div>
 
@@ -60,3 +50,9 @@
         </button>
     </div>
 </section>
+
+<?php
+else:
+    echo '<p>Geen getuigenissen gevonden.</p>';
+endif;
+?>

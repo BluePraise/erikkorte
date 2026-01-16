@@ -415,7 +415,72 @@
                     "name": "testimonials",
                     "label": "Getuigenissen Carrousel",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+                        {
+                            "key": "field_testimonials_repeater",
+                            "label": "Getuigenissen",
+                            "name": "testimonials_list",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Voeg getuigenissen toe aan de carrousel",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_testimonial_title",
+                            "button_label": "Getuigenis Toevoegen",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_testimonial_title",
+                                    "label": "Titel",
+                                    "name": "testimonial_title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Titel van de getuigenis (bijv. \"Hartverwarmend\")",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_testimonial_content",
+                                    "label": "Inhoud",
+                                    "name": "testimonial_content",
+                                    "aria-label": "",
+                                    "type": "wysiwyg",
+                                    "instructions": "Getuigenis tekst",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 0
+                                }
+                            ]
+                        }
+                    ],
                     "min": "",
                     "max": ""
                 }
@@ -450,5 +515,5 @@
     "description": "Flexibele inhoudsblokken voor de homepage. Voeg secties toe, verwijder en herschik ze indien nodig.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768525599
+    "modified": 1768526900
 }

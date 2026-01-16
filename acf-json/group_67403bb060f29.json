@@ -1,6 +1,6 @@
 {
     "key": "group_67403bb060f29",
-    "title": "Site Info Settings",
+    "title": "Algemene informatie",
     "fields": [
         {
             "key": "field_696947a1092ea",
@@ -171,5 +171,5 @@
     "description": "Instelling voor de gehele site: Contact informatie, Team Erik Korte.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768510620
+    "modified": 1768527526
 }

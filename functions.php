@@ -380,8 +380,8 @@ function my_acf_init() {
 	if( function_exists('acf_add_options_page') ) {
 
 		$option_page = acf_add_options_page(array(
-			'page_title' 	=> __('Theme General Settings', 'my_text_domain'),
-			'menu_title' 	=> __('Theme Settings', 'my_text_domain'),
+			'page_title' 	=> __('Theme General Settings', 'erikkorte'),
+			'menu_title' 	=> __('Algemene Instellingen', 'erikkorte'),
 			'menu_slug' 	=> 'theme-general-settings',
 		));
 
