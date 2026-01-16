@@ -11,6 +11,11 @@ get_template_part('template-parts/hero-banner');
 <div class="content-wrapper">
     <div class="container-fluid my-lg-5 my-3">
 
+        <div class="testimonials-header mb-4">
+            <a class="btn btn-primary" href="https://leotwelve.com/24/ek/laat-een-reactie-achter/">
+                Laat een reactie achter<span class="bc-arrow-right"></span>
+            </a>
+        </div>
 
             <?php
             $paged = max(1, get_query_var('paged', 1));

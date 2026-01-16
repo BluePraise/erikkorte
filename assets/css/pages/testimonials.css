@@ -3,6 +3,13 @@
    Erik Korte Theme - Testimonials
    ========================================================================== */
 
+/* Testimonials Header */
+.testimonials-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 /* Testimonials Container - Grid Layout */
 .testimonials {
     display: grid;
