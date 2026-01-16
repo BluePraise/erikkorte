@@ -392,7 +392,7 @@
                             "name": "team_description",
                             "aria-label": "",
                             "type": "textarea",
-                            "instructions": "Sectie intro tekst",
+                            "instructions": "Sectie intro tekst. Teamleden worden automatisch opgehaald uit de Team tab.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -405,164 +405,6 @@
                             "rows": 3,
                             "placeholder": "",
                             "new_lines": ""
-                        },
-                        {
-                            "key": "field_quality_mark",
-                            "label": "Kwaliteitskeurmerk Afbeelding",
-                            "name": "quality_mark",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "Kwaliteitscertificering badge (wordt weergegeven na teamleden)",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "url",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_team_members",
-                            "label": "Teamleden",
-                            "name": "team_members",
-                            "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "Voeg teamlid profielen toe (4 per rij)",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "row",
-                            "pagination": 0,
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "field_member_name",
-                            "button_label": "Teamlid Toevoegen",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_member_profile_image",
-                                    "label": "Profielfoto",
-                                    "name": "member_profile_image",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "Teamlid foto",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "url",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": "",
-                                    "preview_size": "medium",
-                                    "parent_repeater": "field_team_members"
-                                },
-                                {
-                                    "key": "field_member_name",
-                                    "label": "Naam",
-                                    "name": "member_name",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "Volledige naam",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_team_members"
-                                },
-                                {
-                                    "key": "field_member_designation",
-                                    "label": "Functie",
-                                    "name": "member_designation",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "Functietitel",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_team_members"
-                                },
-                                {
-                                    "key": "field_member_email",
-                                    "label": "E-mail",
-                                    "name": "member_email",
-                                    "aria-label": "",
-                                    "type": "email",
-                                    "instructions": "Contact e-mailadres",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_team_members"
-                                },
-                                {
-                                    "key": "field_member_phone",
-                                    "label": "Telefoon",
-                                    "name": "member_phone",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "Contact telefoonnummer",
-                                    "required": 1,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_team_members"
-                                }
-                            ]
                         }
                     ],
                     "min": "",
@@ -608,5 +450,5 @@
     "description": "Flexibele inhoudsblokken voor de homepage. Voeg secties toe, verwijder en herschik ze indien nodig.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768424327
+    "modified": 1768525599
 }

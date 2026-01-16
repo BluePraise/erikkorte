@@ -1,0 +1,97 @@
+{
+    "key": "group_team_member",
+    "title": "Teamlid Gegevens",
+    "fields": [
+        {
+            "key": "field_team_member_designation",
+            "label": "Functie",
+            "name": "member_designation",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Functietitel (bijv. Uitvaartleider, Administratie)",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_team_member_email",
+            "label": "E-mail",
+            "name": "member_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Contact e-mailadres",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_team_member_phone",
+            "label": "Telefoon",
+            "name": "member_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Contact telefoonnummer",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "team_member"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "page_attributes",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Contactgegevens voor teamleden",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1768527094
+}

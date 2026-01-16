@@ -126,24 +126,6 @@
             "delay": 0
         },
         {
-            "key": "field_67403c78d3f6c",
-            "label": "Footer Option",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_67403cd4d3f6f",
             "label": "Keurkmerk",
             "name": "logo_image",
@@ -189,5 +171,5 @@
     "description": "Instelling voor de gehele site: Contact informatie, Team Erik Korte.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768510400
+    "modified": 1768510620
 }

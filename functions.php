@@ -194,6 +194,47 @@ register_nav_menu('main-menu', 'Main Menu');
 register_nav_menu('footer-quick', 'Footer Quick Menu');
 register_nav_menu('regions-menu', 'Regions Menu');
 
+/**
+ * Register Custom Post Type: Team Member
+ * Used for team profiles across the site
+ */
+function erikkorte_register_team_cpt() {
+    $labels = array(
+        'name'                  => 'Teamleden',
+        'singular_name'         => 'Teamlid',
+        'menu_name'             => 'Team',
+        'add_new'               => 'Nieuw Teamlid',
+        'add_new_item'          => 'Nieuw Teamlid Toevoegen',
+        'edit_item'             => 'Teamlid Bewerken',
+        'new_item'              => 'Nieuw Teamlid',
+        'view_item'             => 'Teamlid Bekijken',
+        'search_items'          => 'Teamleden Zoeken',
+        'not_found'             => 'Geen teamleden gevonden',
+        'not_found_in_trash'    => 'Geen teamleden in prullenbak',
+        'all_items'             => 'Alle Teamleden',
+    );
+
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_icon'             => 'dashicons-groups',
+        'menu_position'         => 25,
+        'query_var'             => true,
+        'rewrite'               => array('slug' => 'team'),
+        'capability_type'       => 'post',
+        'has_archive'           => false,
+        'hierarchical'          => false,
+        'supports'              => array('title', 'thumbnail'),
+        'show_in_rest'          => true,
+    );
+
+    register_post_type('team_member', $args);
+}
+add_action('init', 'erikkorte_register_team_cpt');
+
 
 function theme_support() {
     // Add theme support for various features
