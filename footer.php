@@ -50,8 +50,8 @@
                             $email = $address_group['email_address'];
                             echo 'E-mail: <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:' . esc_attr($email) . '" aria-label="Stuur een e-mail naar ' . esc_attr($email) . '">' . esc_html($email) . '</a><br>';
                         }
-                        // Website using WordPress home URL
-                        echo 'Website: <a href="' . esc_url(home_url('/')) . '" aria-label="Bezoek onze website">' . esc_html(parse_url(home_url('/'), PHP_URL_HOST)) . '</a>';
+                        // Hardcoded website link with WordPress Sanitize functions
+                        echo 'Website: <a href="' . esc_url('https://www.erikkorte.nl') . '" aria-label="Bezoek onze website">' . esc_html('https://www.erikkorte.nl') . '</a>';
                         echo '</p>';
                     }
                     ?>

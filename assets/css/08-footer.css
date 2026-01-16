@@ -248,10 +248,6 @@ a.socials-item:hover i {
     text-decoration: underline;
 }
 
-.footer-quick-menu {
-    text-align: center;
-}
-
 /* Footer Flex Order */
 .order_1 {
     order: 1;
