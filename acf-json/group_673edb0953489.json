@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_673edb0a6a93e",
-            "label": "Contact us details",
+            "label": "Contact Opnemen",
             "name": "contact_us_details",
             "aria-label": "",
             "type": "repeater",
@@ -53,7 +53,7 @@
                 },
                 {
                     "key": "field_673edb506a940",
-                    "label": "Title",
+                    "label": "Label",
                     "name": "title",
                     "aria-label": "",
                     "type": "text",
@@ -75,7 +75,7 @@
                 },
                 {
                     "key": "field_673edb606a941",
-                    "label": "Contant",
+                    "label": "Contact Type",
                     "name": "contant",
                     "aria-label": "",
                     "type": "text",
@@ -181,5 +181,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768422481
+    "modified": 1768534972
 }
