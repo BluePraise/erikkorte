@@ -16,7 +16,7 @@ $partners_logo = get_sub_field('partners_logo');
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <?php if ($left_image) : ?>
-                    <img src="<?php echo esc_url($left_image); ?>" class="img-fluid" alt="">
+                    <img src="<?php echo esc_url($left_image); ?>" class="img-fluid" alt="<?php echo esc_attr(get_the_title()); ?>">
                 <?php endif; ?>
             </div>
             <div class="col-lg-8 col-md-8">

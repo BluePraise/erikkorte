@@ -15,7 +15,7 @@ $contact_details = get_field('contact_us_details');
                 <?php foreach ($contact_details as $key => $row) { ?>
                     <div class="col-sm-12 col-lg-3">
                         <div class="icon">
-                            <img src="<?php echo $row['icon']; ?>" />
+                            <img src="<?php echo esc_url($row['icon']); ?>" alt="<?php echo esc_attr($row['title']); ?>" />
                         </div>
                         <h2><?php echo $row['title']; ?></h2>
                         <?php if ($row['link'] != '') { ?>

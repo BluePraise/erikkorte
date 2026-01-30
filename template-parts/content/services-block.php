@@ -26,7 +26,7 @@ $services_description = get_sub_field('services_description');
     <div class="container-fluid">
         <div class="wpb_wrapper">
             <?php if ($services_heading): ?>
-                <h2 class="section-title text-center"><?php echo esc_html($services_heading); ?></h2>
+                <h1 class="section-title text-center"><?php echo esc_html($services_heading); ?></h1>
             <?php endif; ?>
             <?php if ($services_sub_heading): ?>
                 <h2 class="section-title text-center"><?php echo esc_html($services_sub_heading); ?></h2>
