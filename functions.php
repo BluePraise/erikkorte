@@ -141,7 +141,7 @@ function erikkorte_enqueue_assets() {
 
     // Blog index and single posts
     $blog_css = get_template_directory() . '/assets/css/pages/blog.css';
-    if ((is_home() || is_archive() || is_single()) && file_exists($blog_css)) {
+    if ((is_page('blog') || is_home() || is_archive() || is_single()) && file_exists($blog_css)) {
         wp_enqueue_style(
             'erikkorte-page-blog',
             get_template_directory_uri() . '/assets/css/pages/blog.css',
@@ -273,6 +273,7 @@ function theme_support() {
     add_theme_support('widgets');
     add_theme_support('custom-header');
     add_theme_support('page-attributes'); // Ensure page attributes panel shows in block editor
+    add_theme_support('title-tag'); // Let WordPress manage the document title
 
     $defaults = array(
 		'height'               => 100,
@@ -533,6 +534,96 @@ add_filter('manage_edit-page_sortable_columns', 'make_featured_image_column_sort
  * The old meta box code has been REMOVED to avoid conflicts.
  * Post type is 'condoleance' (not 'cpt_condolances')
  */
+
+/**
+ * SEO Functions
+ * Add meta descriptions and canonical URLs
+ */
+function erikkorte_add_seo_meta_tags() {
+    // Meta Description
+    $meta_description = '';
+
+    if (is_singular()) {
+        // Check for Yoast/RankMath meta first
+        $yoast_desc = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+        $rankmath_desc = get_post_meta(get_the_ID(), 'rank_math_description', true);
+
+        if (!empty($yoast_desc)) {
+            $meta_description = $yoast_desc;
+        } elseif (!empty($rankmath_desc)) {
+            $meta_description = $rankmath_desc;
+        } else {
+            // Fallback to excerpt or content
+            $post = get_post();
+            if (!empty($post->post_excerpt)) {
+                $meta_description = wp_trim_words($post->post_excerpt, 20, '...');
+            } else {
+                $meta_description = wp_trim_words(strip_tags($post->post_content), 20, '...');
+            }
+        }
+    } elseif (is_home() || is_front_page()) {
+        $meta_description = get_bloginfo('description');
+    } elseif (is_category()) {
+        $meta_description = category_description();
+    } elseif (is_tag()) {
+        $meta_description = tag_description();
+    } elseif (is_archive()) {
+        $meta_description = get_the_archive_description();
+    }
+
+    // Output meta description
+    if (!empty($meta_description)) {
+        echo '<meta name="description" content="' . esc_attr(strip_tags($meta_description)) . '">' . "\n";
+    }
+
+    // Canonical URL
+    $canonical_url = '';
+
+    if (is_singular()) {
+        $canonical_url = get_permalink();
+    } elseif (is_home() || is_front_page()) {
+        $canonical_url = home_url('/');
+    } elseif (is_category() || is_tag() || is_tax()) {
+        $canonical_url = get_term_link(get_queried_object());
+    } elseif (is_post_type_archive()) {
+        $canonical_url = get_post_type_archive_link(get_post_type());
+    }
+
+    // Output canonical URL
+    if (!empty($canonical_url) && !is_wp_error($canonical_url)) {
+        echo '<link rel="canonical" href="' . esc_url($canonical_url) . '">' . "\n";
+    }
+
+    // Open Graph tags for social media
+    if (is_singular()) {
+        $post = get_post();
+        echo '<meta property="og:type" content="article">' . "\n";
+        echo '<meta property="og:title" content="' . esc_attr(get_the_title()) . '">' . "\n";
+        echo '<meta property="og:url" content="' . esc_url(get_permalink()) . '">' . "\n";
+
+        if (!empty($meta_description)) {
+            echo '<meta property="og:description" content="' . esc_attr(strip_tags($meta_description)) . '">' . "\n";
+        }
+
+        if (has_post_thumbnail()) {
+            $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'large');
+            echo '<meta property="og:image" content="' . esc_url($thumbnail_url) . '">' . "\n";
+        }
+    }
+}
+add_action('wp_head', 'erikkorte_add_seo_meta_tags', 1);
+
+/**
+ * Filter to ensure all images have alt text
+ * Adds a filter to automatically use the image title if alt text is missing
+ */
+function erikkorte_default_image_alt($attr, $attachment) {
+    if (empty($attr['alt'])) {
+        $attr['alt'] = get_the_title($attachment->ID);
+    }
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'erikkorte_default_image_alt', 10, 2);
 
 /**
  * ACF JSON Save & Load Points

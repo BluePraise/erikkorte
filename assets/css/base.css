@@ -129,7 +129,8 @@ img {
     }
 }
 
-.content-wrapper .row + .row {
+/* Spacing between rows inside content wrapper, but NOT for blog posts */
+.content-wrapper:not(.blog-posts) .row + .row {
     margin-top: 8rem;
 }
 /* =============================================================================
@@ -193,6 +194,36 @@ img {
         font-size: 12pt;
         line-height: 1.5;
     }
+}
+
+/* =============================================================================
+   Pagination
+   ========================================================================== */
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination .page-numbers {
+    padding: 0.5rem 0.75rem;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.pagination .page-numbers.current {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.pagination .page-numbers:hover:not(.current) {
+    background: #e0e0e0;
 }
 
 /* Page-specific styles are loaded conditionally via functions.php */

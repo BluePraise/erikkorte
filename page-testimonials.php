@@ -65,7 +65,7 @@ get_template_part('template-parts/hero-banner');
 
                 <!-- Pagination and Footer -->
                 <section class="testim__footer spacebetween">
-                    <div class="testimonials-pagination">
+                    <div class="pagination">
                         <?php
                         echo paginate_links([
                             'base'      => get_pagenum_link(1) . '%_%',
