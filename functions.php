@@ -46,33 +46,33 @@ function erikkorte_enqueue_assets() {
     }
 
     // 3a. HEADER CSS (Loaded site-wide)
-    $header_css = get_template_directory() . '/assets/css/07-header.css';
+    $header_css = get_template_directory() . '/assets/css/header.css';
     if (file_exists($header_css)) {
         wp_enqueue_style(
             'erikkorte-header',
-            get_template_directory_uri() . '/assets/css/07-header.css',
+            get_template_directory_uri() . '/assets/css/header.css',
             array('erikkorte-base'),
             filemtime($header_css)
         );
     }
 
     // 3b. FOOTER CSS (Loaded site-wide)
-    $footer_css = get_template_directory() . '/assets/css/08-footer.css';
+    $footer_css = get_template_directory() . '/assets/css/footer.css';
     if (file_exists($footer_css)) {
         wp_enqueue_style(
             'erikkorte-footer',
-            get_template_directory_uri() . '/assets/css/08-footer.css',
+            get_template_directory_uri() . '/assets/css/footer.css',
             array('erikkorte-base'),
             filemtime($footer_css)
         );
     }
 
     // 3c. COMPONENTS CSS (Loaded site-wide)
-    $components_css = get_template_directory() . '/assets/css/09-components.css';
+    $components_css = get_template_directory() . '/assets/css/components.css';
     if (file_exists($components_css)) {
         wp_enqueue_style(
             'erikkorte-components',
-            get_template_directory_uri() . '/assets/css/09-components.css',
+            get_template_directory_uri() . '/assets/css/components.css',
             array('erikkorte-base'),
             filemtime($components_css)
         );

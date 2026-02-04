@@ -152,17 +152,25 @@ img {
 /* Skip to content link (keyboard navigation) */
 .skip-link {
     position: absolute;
-    top: -40px;
-    left: 0;
+    top: -999px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--theme-color-1);
     color: #fff;
-    padding: 8px 16px;
+    padding: 12px 24px;
     text-decoration: none;
-    z-index: 100;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: top 0.2s ease;
 }
 
 .skip-link:focus {
-    top: 0;
+    top: 10px;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
 }
 
 /* Screen reader only text */

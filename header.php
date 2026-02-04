@@ -25,4 +25,4 @@ get_template_part('template-parts/header/head');
                 ?>
             </nav>
         </header>
-        <main id="main-content">
+        <main id="main-content" tabindex="-1">
