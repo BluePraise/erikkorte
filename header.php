@@ -3,6 +3,7 @@ get_template_part('template-parts/header/head');
 ?>
 
 <body <?php body_class(); ?>>
+    <a class="skip-link" href="#main-content"><?php _e('Skip to content', 'erikkorte'); ?></a>
     <div class="site-wrapper">
 
         <header class="site-header sticky-top">
@@ -24,4 +25,4 @@ get_template_part('template-parts/header/head');
                 ?>
             </nav>
         </header>
-        <main>
+        <main id="main-content">
