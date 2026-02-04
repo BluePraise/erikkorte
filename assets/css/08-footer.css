@@ -127,8 +127,6 @@ footer .menu li:before {
     color: #dde5eb;
     font-family: var(--main-font);
     font-size: 16px;
-    -o-transition: all 0.2s linear;
-    -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
     text-decoration: none;
 }

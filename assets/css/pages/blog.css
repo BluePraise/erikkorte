@@ -5,16 +5,113 @@
 
 /* Blog post styling will be extracted from main CSS */
 /* Placeholder for now - will be populated with blog-specific styles */
-
 .blog-post {
     border: 1px solid var(--theme-color3);
     border-radius: 0.5rem;
     margin-bottom: 2rem;
+    transition: box-shadow 0.3s ease;
 }
+
+.blog-post:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Post Image */
+.post-img {
+    overflow: hidden;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.post-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-img a:hover img {
+    transform: scale(1.05);
+}
+
+/* Post Content */
 .post-content {
     line-height: 1.8;
 }
 
+.post-content h3 {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.post-content h3 a {
+    color: var(--theme-color4);
+    transition: color 0.3s ease;
+}
+
+.post-content h3 a:hover {
+    color: var(--theme-color-1);
+}
+
+.post-content p {
+    color: var(--theme-color-2);
+    margin-bottom: 0;
+}
+
 .post-content .btn {
     margin-top: 1rem;
+}
+
+/* Single Post Styles */
+.single-post-content .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--theme-color3);
+}
+
+.single-post-content .post-meta {
+    color: var(--theme-color-2);
+    font-size: 0.875rem;
+}
+
+.single-post-content .post-navigation-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.single-post-content .post-navigation-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: var(--theme-gray-1);
+    color: var(--theme-color4);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.single-post-content .post-navigation-icons a:hover {
+    background-color: var(--theme-color-1);
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .blog-post {
+        margin-bottom: 1.5rem;
+    }
+
+    .post-img {
+        border-radius: 0.5rem 0.5rem 0 0;
+        margin-bottom: 1rem;
+    }
+
+    .single-post-content .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
 }

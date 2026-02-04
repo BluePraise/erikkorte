@@ -81,6 +81,7 @@
 .contact-form textarea:focus {
     outline: none;
     border-color: #a82b2b;
+    border-width: 2px;
     background: #fff;
 }
 
