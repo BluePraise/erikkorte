@@ -166,6 +166,26 @@
     font-family: var(--main-font);
 }
 
+.services .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.services .row > [class*="col-"] {
+    display: flex;
+}
+
+.services .row > [class*="col-"] .links_info {
+    display: flex;
+    width: 100%;
+}
+
+.services .row > [class*="col-"] .quickfinder-item-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .links_info {
     text-decoration: none;
 }
