@@ -353,6 +353,25 @@
                                     "placeholder": "",
                                     "new_lines": "",
                                     "parent_repeater": "field_services"
+                                },
+                                {
+                                    "key": "field_698a2b440c246",
+                                    "label": "Link \/ Url",
+                                    "name": "services_url",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_services"
                                 }
                             ]
                         }
@@ -456,7 +475,8 @@
                                     "maxlength": "",
                                     "placeholder": "",
                                     "prepend": "",
-                                    "append": ""
+                                    "append": "",
+                                    "parent_repeater": "field_testimonials_repeater"
                                 },
                                 {
                                     "key": "field_testimonial_content",
@@ -476,7 +496,8 @@
                                     "tabs": "all",
                                     "toolbar": "basic",
                                     "media_upload": 0,
-                                    "delay": 0
+                                    "delay": 0,
+                                    "parent_repeater": "field_testimonials_repeater"
                                 }
                             ]
                         }
@@ -515,5 +536,5 @@
     "description": "Flexibele inhoudsblokken voor de homepage. Voeg secties toe, verwijder en herschik ze indien nodig.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768526900
+    "modified": 1770662807
 }
