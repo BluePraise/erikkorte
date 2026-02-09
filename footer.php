@@ -7,8 +7,13 @@
                 <div class="textwidget">
                     <?php the_field('over_ons_text', 'option'); ?>
                     <p class="text-center">
+                        <?php
+                        $footer_logo = get_field('logo_image', 'option');
+                        $footer_logo_src = is_array($footer_logo) ? $footer_logo['url'] : $footer_logo;
+                        $footer_logo_alt = is_array($footer_logo) && !empty($footer_logo['alt']) ? $footer_logo['alt'] : get_bloginfo('name') . ' logo';
+                        ?>
                         <a href="<?php echo esc_url(get_field('logo_image_url', 'option')); ?>" aria-label="<?php echo esc_attr(get_field('over_ons', 'option')); ?>">
-                            <img src="<?php echo esc_url(get_field('logo_image', 'option')); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?> logo" loading="lazy">
+                            <img src="<?php echo esc_url($footer_logo_src); ?>" alt="<?php echo esc_attr($footer_logo_alt); ?>" loading="lazy">
                         </a>
                     </p>
                 </div>
@@ -58,7 +63,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <h3 class="footer-title widget-title"><?php esc_html_e('Lokaties', 'erikkorte'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
+                <h3 class="footer-title widget-title"><?php esc_html_e('Wij helpen u graag bij uw uitvaart in de regio’s:', 'erikkorte'); ?> <i class="fa fa-caret-down" aria-hidden="true"></i></h3>
                 <nav class="footer-locations-menu footer-quick-menu" aria-label="Footer locations navigation">
                     <?php
                     wp_nav_menu(array(

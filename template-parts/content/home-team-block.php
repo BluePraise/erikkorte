@@ -19,7 +19,14 @@
 
 $team_heading = get_sub_field('team_heading');
 $team_description = get_sub_field('team_description');
-$quality_mark = get_field('logo_image', 'option'); // Quality mark from site settings
+$quality_mark_field = get_field('logo_image', 'option'); // Quality mark from site settings
+if (is_array($quality_mark_field)) {
+    $quality_mark_src = $quality_mark_field['url'];
+    $quality_mark_alt = $quality_mark_field['alt'] ?: 'Quality Mark';
+} else {
+    $quality_mark_src = $quality_mark_field;
+    $quality_mark_alt = 'Quality Mark';
+}
 ?>
 
 <!-- Team Section -->
@@ -83,10 +90,10 @@ $quality_mark = get_field('logo_image', 'option'); // Quality mark from site set
                 wp_reset_postdata();
 
                 // Quality mark after team members
-                if ($quality_mark):
+                if ($quality_mark_src):
             ?>
                     <div class="wpb_single_image quality-mark text-center mt-4">
-                        <img src="<?php echo esc_url($quality_mark); ?>" alt="Quality Mark">
+                        <img src="<?php echo esc_url($quality_mark_src); ?>" alt="<?php echo esc_attr($quality_mark_alt); ?>">
                     </div>
             <?php
                 endif;

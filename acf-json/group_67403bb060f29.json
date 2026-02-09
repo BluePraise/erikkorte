@@ -139,7 +139,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
+            "return_format": "array",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -171,5 +171,5 @@
     "description": "Instelling voor de gehele site: Contact informatie, Team Erik Korte.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768527526
+    "modified": 1770665510
 }
