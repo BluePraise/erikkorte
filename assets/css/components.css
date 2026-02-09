@@ -310,7 +310,75 @@
     font-size: 50px;
 }
 
+/* =============================================================================
+   Gallery Block (gallery-block.php)
+   ========================================================================== */
+
+.gallery-content-section .text-content-wrapper {
+    width: 100%;
+}
+
+.theme-gallery {
+    display: grid;
+    gap: 1rem;
+}
+
+.three-col-gallery {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.two-col-gallery {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gallery-image {
+    overflow: hidden;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image img {
+    transform: scale(1.05);
+}
+
+.title-caption-col {
+    padding: 0.75rem 0;
+}
+
+.title-caption-col h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.title-caption-col p {
+    font-size: 0.875rem;
+    color: var(--theme-color-2);
+    margin-bottom: 0;
+}
+
 /* Responsive */
+@media screen and (max-width: 991px) {
+    .three-col-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .page-title-title h1 {
         font-size: 2rem;
@@ -320,5 +388,10 @@
     .icon_box {
         padding: 30px;
         padding-top: 60px;
+    }
+
+    .three-col-gallery,
+    .two-col-gallery {
+        grid-template-columns: 1fr;
     }
 }
