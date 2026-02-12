@@ -4,7 +4,7 @@ get_header();
 get_template_part('template-parts/hero-banner');
 ?>
 
-<div class="single-post-content content-wrapper">
+<div class="single-post-content">
     <div class="container-fluid my-lg-5 my-3">
         <?php
         if (have_posts()) :

@@ -1,3 +1,6 @@
+<?php if (!is_front_page()) : ?>
+</div>
+<?php endif; ?>
 </main>
 <footer class="site-footer">
     <div class="container-fluid p-5">

@@ -4,9 +4,7 @@ get_header();
 get_template_part('template-parts/hero-banner');
 ?>
 
-<div class="content-wrapper">
-
-        <?php the_content(); ?>
+<?php the_content(); ?>
 
         <?php
         // Legacy gallery_col field support
@@ -35,7 +33,5 @@ get_template_part('template-parts/hero-banner');
             ]);
         }
         ?>
-
-</div>
 
 <?php get_footer(); ?>

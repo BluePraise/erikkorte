@@ -17,3 +17,7 @@ $banner_title = isset($args['title']) ? $args['title'] : get_the_title();
         <?php echo the_breadcrumb(); ?>
     </div>
 </div>
+
+<?php if (!is_front_page()) : ?>
+<div class="content-wrapper">
+<?php endif; ?>

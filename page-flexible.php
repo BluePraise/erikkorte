@@ -11,8 +11,6 @@ get_header();
 get_template_part('template-parts/hero-banner');
 ?>
 
-<div class="content-wrapper">
-
 <?php
 if (have_rows('flexible_content')) :
     while (have_rows('flexible_content')) : the_row();
@@ -45,9 +43,8 @@ if (have_rows('flexible_content')) :
                 break;
         }
 
-    endwhile; ?>
-</div>
-<?php else :
+    endwhile;
+else :
     // Fallback to default content if no flexible content
 ?>
     <div class="content-wrapper">

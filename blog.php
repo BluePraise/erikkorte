@@ -5,7 +5,7 @@ get_header();
 get_template_part('template-parts/hero-banner');
 ?>
 
-<div class="blog-posts content-wrapper">
+<div class="blog-posts">
     <div class="container-fluid my-lg-5 my-3">
         <?php
         // Get the current page number
