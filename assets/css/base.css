@@ -129,6 +129,11 @@ img {
     }
 }
 
+/* Helper function*/
+.d-none {
+    display: none !important;
+}
+
 /* Spacing between rows inside content wrapper, but NOT for blog posts */
 .content-wrapper:not(.blog-posts) .row + .row {
     margin-top: 8rem;

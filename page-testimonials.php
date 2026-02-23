@@ -8,11 +8,10 @@ get_header();
 get_template_part('template-parts/hero-banner');
 ?>
 
-<div class="content-wrapper">
     <div class="container-fluid my-lg-5 my-3">
 
         <div class="testimonials-header mb-4">
-            <a class="btn btn-primary" href="https://leotwelve.com/24/ek/laat-een-reactie-achter/">
+            <a class="d-none btn btn-primary" href="https://leotwelve.com/24/ek/laat-een-reactie-achter/">
                 Laat een reactie achter<span class="bc-arrow-right"></span>
             </a>
         </div>
@@ -78,7 +77,7 @@ get_template_part('template-parts/hero-banner');
                         ?>
                     </div>
                     <div class="jump-to-testim-form">
-                        <a class="btn btn-primary" href="https://leotwelve.com/24/ek/laat-een-reactie-achter/">
+                        <a class="d-none btn btn-primary" href="https://leotwelve.com/24/ek/laat-een-reactie-achter/">
                             Laat een reactie achter<span class="bc-arrow-right"></span>
                         </a>
                     </div>

@@ -150,6 +150,7 @@
     min-height: 350px;
     padding: 0 !important;
     background-position: center;
+    background-color: var(--theme-color-4);
     position: relative;
     z-index: 2;
 }
