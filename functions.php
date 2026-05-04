@@ -640,3 +640,98 @@ add_filter('acf/settings/load_json', function($paths) {
 });
 
 
+/**
+ * Handle CF7 Testimonial Form Submission
+ * Creates a pending 'testim_and_reviews' post from form data
+ */
+function erikkorte_handle_testimonial_submission($contact_form) {
+    if ($contact_form->title() !== 'Reactie Formulier') {
+        return;
+    }
+
+    $submission = WPCF7_Submission::get_instance();
+    if (!$submission) {
+        return;
+    }
+
+    $data = $submission->get_posted_data();
+    $name = sanitize_text_field($data['your-name'] ?? '');
+    $message = sanitize_textarea_field($data['your-message'] ?? '');
+
+    if (empty($name) || empty($message)) {
+        return;
+    }
+
+    $post_id = wp_insert_post([
+        'post_type'    => 'testim_and_reviews',
+        'post_title'   => $name,
+        'post_content' => $message,
+        'post_status'  => 'pending',
+    ]);
+
+    if (is_wp_error($post_id)) {
+        return;
+    }
+
+    // Handle optional photo upload
+    $uploaded_files = $submission->uploaded_files();
+    if (!empty($uploaded_files['your-photo'])) {
+        $file_path = is_array($uploaded_files['your-photo'])
+            ? $uploaded_files['your-photo'][0]
+            : $uploaded_files['your-photo'];
+
+        if ($file_path && file_exists($file_path)) {
+            $attachment_id = erikkorte_upload_to_media_library($file_path, $post_id);
+            if ($attachment_id) {
+                set_post_thumbnail($post_id, $attachment_id);
+                return;
+            }
+        }
+    }
+
+    // No photo uploaded — assign random placeholder from ACF options
+    if (function_exists('get_field')) {
+        $placeholders = get_field('testimonial_placeholder_images', 'option');
+        if (!empty($placeholders) && is_array($placeholders)) {
+            $random_id = $placeholders[array_rand($placeholders)];
+            set_post_thumbnail($post_id, $random_id);
+        }
+    }
+}
+add_action('wpcf7_before_send_mail', 'erikkorte_handle_testimonial_submission');
+
+/**
+ * Upload a file to the WordPress Media Library
+ */
+function erikkorte_upload_to_media_library($file_path, $parent_post_id = 0) {
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+
+    $filename = basename($file_path);
+    $upload_dir = wp_upload_dir();
+    $new_path = $upload_dir['path'] . '/' . wp_unique_filename($upload_dir['path'], $filename);
+
+    if (!copy($file_path, $new_path)) {
+        return false;
+    }
+
+    $filetype = wp_check_filetype($filename, null);
+    $attachment = [
+        'guid'           => $upload_dir['url'] . '/' . basename($new_path),
+        'post_mime_type' => $filetype['type'],
+        'post_title'     => sanitize_file_name(pathinfo($filename, PATHINFO_FILENAME)),
+        'post_content'   => '',
+        'post_status'    => 'inherit',
+    ];
+
+    $attachment_id = wp_insert_attachment($attachment, $new_path, $parent_post_id);
+    if (is_wp_error($attachment_id)) {
+        return false;
+    }
+
+    $metadata = wp_generate_attachment_metadata($attachment_id, $new_path);
+    wp_update_attachment_metadata($attachment_id, $metadata);
+
+    return $attachment_id;
+}

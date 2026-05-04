@@ -136,3 +136,121 @@
         text-align: center;
     }
 }
+
+/* =============================================================================
+   Testimonial Modal Form Styles
+   ========================================================================== */
+
+#testimonialModal .modal-header {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1.5rem 2rem;
+}
+
+#testimonialModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+#testimonialModal .modal-body {
+    padding: 2rem;
+}
+
+.testimonial-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+.testimonial-form input[type="text"],
+.testimonial-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    color: #333;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.testimonial-form input[type="text"]:focus,
+.testimonial-form textarea:focus {
+    outline: none;
+    border-color: #a82b2b;
+    border-width: 2px;
+    background: #fff;
+}
+
+.testimonial-form input::placeholder,
+.testimonial-form textarea::placeholder {
+    color: #999;
+}
+
+.testimonial-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.testimonial-form input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    cursor: pointer;
+}
+
+.testimonial-form .wpcf7-form-control-wrap {
+    display: block;
+}
+
+.testimonial-form .wpcf7-form p {
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-form input[type="submit"],
+.testimonial-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #a82b2b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.testimonial-form input[type="submit"]:hover,
+.testimonial-form button[type="submit"]:hover {
+    background: #8a2323;
+}
+
+.testimonial-form .wpcf7-response-output {
+    margin: 1rem 0 0;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+}
+
+.testimonial-form .wpcf7-mail-sent-ok {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.testimonial-form .wpcf7-not-valid-tip {
+    color: #a82b2b;
+    font-size: 0.8125rem;
+    margin-top: -0.75rem;
+    margin-bottom: 0.5rem;
+}

@@ -151,6 +151,74 @@
             "allow_in_bindings": 0,
             "preview_size": "medium"
         }
+        {
+            "key": "field_reactie_instellingen_tab",
+            "label": "Reactie Instellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_testimonial_form_shortcode",
+            "label": "Reactie Formulier Shortcode",
+            "name": "testimonial_form_shortcode",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Plak hier de Contact Form 7 shortcode voor het reactieformulier. Voorbeeld: [contact-form-7 id=\"123\" title=\"Reactie Formulier\"]",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "[contact-form-7 id=\"...\" title=\"Reactie Formulier\"]",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_testimonial_placeholder_images",
+            "label": "Standaard Afbeeldingen voor Reacties",
+            "name": "testimonial_placeholder_images",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Upload hier standaard afbeeldingen die worden gebruikt wanneer een bezoeker geen foto uploadt bij een reactie. Er wordt willekeurig een afbeelding gekozen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min": 1,
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "allow_in_bindings": 0,
+            "insert": "append",
+            "preview_size": "medium"
+        }
     ],
     "location": [
         [
