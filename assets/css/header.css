@@ -116,7 +116,7 @@ header p {
     font-size: 16px;
     font-weight: normal;
     font-family: var(--main-font);
-    text-transform: capitalize;
+    text-transform: none;
     transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
@@ -219,7 +219,7 @@ header p {
         border-bottom: 1px solid #fff;
     }
 
-    .site-header .main-menu li a {
+    .site-header .main-menu > li > a {
         text-decoration: none !important;
         color: #5f727f;
         display: block;
@@ -228,9 +228,13 @@ header p {
         outline: none;
         font-size: 16px;
         font-weight: normal;
-        text-transform: capitalize;
+        text-transform: uppercase;
         font-family: var(--main-font);
         border-bottom: 1px solid #dfe5e8;
+    }
+
+    .site-header .sub-menu li a {
+        text-transform: none;
     }
 }
 
